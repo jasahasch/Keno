@@ -1,0 +1,5 @@
+{
+  "priority_keys": 7,
+  "shared_only_duplicates_possible": false,
+  "reason": "All degree-at-least-two shared-membership sets differ; degree-one cards have at least one unique private number. Residual cards are disjoint."
+}

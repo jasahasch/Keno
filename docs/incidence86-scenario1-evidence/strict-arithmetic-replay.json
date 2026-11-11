@@ -1,0 +1,255 @@
+[
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "method": "structurally-grouped-conditional-tree-cycle",
+    "budget_seconds": 45,
+    "status": "certified-no-improvement",
+    "stage": "finished",
+    "ordinary_lower": 6682432241664,
+    "packed_lower": 6682432241664,
+    "ordinary_totals": 44,
+    "packed_totals": 44,
+    "elapsed_seconds": 38.41129895400081
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        5,
+        6
+      ]
+    ],
+    "method": "structurally-grouped-conditional-tree-cycle",
+    "budget_seconds": 45,
+    "status": "certified-no-improvement",
+    "stage": "finished",
+    "ordinary_lower": 7207894646784,
+    "packed_lower": 7207894646784,
+    "ordinary_totals": 44,
+    "packed_totals": 44,
+    "elapsed_seconds": 11.955013116999908
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        7
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        5,
+        7
+      ],
+      [
+        6,
+        7
+      ]
+    ],
+    "method": "structurally-grouped-conditional-tree-cycle",
+    "budget_seconds": 45,
+    "status": "certified-no-improvement",
+    "stage": "finished",
+    "ordinary_lower": 7289431916544,
+    "packed_lower": 7289431916544,
+    "ordinary_totals": 44,
+    "packed_totals": 44,
+    "elapsed_seconds": 2.2314002120001533
+  },
+  {
+    "shape": [
+      [
+        0,
+        1,
+        5
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "method": "structurally-grouped-conditional-tree-cycle",
+    "budget_seconds": 45,
+    "status": "certified-no-improvement",
+    "stage": "finished",
+    "ordinary_lower": 8092121038848,
+    "packed_lower": 8092121038848,
+    "ordinary_totals": 44,
+    "packed_totals": 44,
+    "elapsed_seconds": 26.89441006800007
+  },
+  {
+    "shape": [
+      [
+        0,
+        1,
+        6
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        5,
+        6
+      ]
+    ],
+    "method": "structurally-grouped-conditional-tree-cycle",
+    "budget_seconds": 45,
+    "status": "certified-no-improvement",
+    "stage": "finished",
+    "ordinary_lower": 8744872181760,
+    "packed_lower": 8744872181760,
+    "ordinary_totals": 44,
+    "packed_totals": 44,
+    "elapsed_seconds": 13.048612421000144
+  },
+  {
+    "shape": [
+      [
+        0,
+        5
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "method": "structurally-grouped-conditional-tree-cycle",
+    "budget_seconds": 45,
+    "status": "certified-no-improvement",
+    "stage": "finished",
+    "ordinary_lower": 4855997399040,
+    "packed_lower": 4855997399040,
+    "ordinary_totals": 43,
+    "packed_totals": 43,
+    "elapsed_seconds": 10.574688029000754
+  },
+  {
+    "shape": [
+      [
+        0,
+        6
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        5,
+        6
+      ]
+    ],
+    "method": "structurally-grouped-conditional-tree-cycle",
+    "budget_seconds": 45,
+    "status": "certified-no-improvement",
+    "stage": "finished",
+    "ordinary_lower": 5014542090240,
+    "packed_lower": 5014542090240,
+    "ordinary_totals": 43,
+    "packed_totals": 43,
+    "elapsed_seconds": 5.323310522000611
+  }
+]
