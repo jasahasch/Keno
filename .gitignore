@@ -104,3 +104,13 @@
 !/unrestricted_resolution/partition_solver.py
 !/unrestricted_resolution/test_resolution.py
 !/unrestricted_resolution/zero.py
+
+# Supervised source-only execution bridge. Runtime state stays outside this checkout.
+!/tools/keno_bridge/
+!/docs/local-codex-bridge.md
+!/tools/keno_bridge/__init__.py
+!/tools/keno_bridge/bridge.py
+!/tools/keno_bridge/gateway.py
+!/tools/keno_bridge/relay.py
+!/tools/keno_bridge/smoke.py
+!/tools/keno_bridge/test_bridge.py
