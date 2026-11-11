@@ -18,6 +18,8 @@ class FakeGitHub:
     def __init__(self):
         self.issue = dict(number=9, state='open', title='Harmless test', body='Verify only')
         self.comments = [dict(id=10, user={'login': b.OWNER}, body='/keno approve ' + b.digest(self.issue))]
+        self.comments.append(dict(id=12, user={'login': b.OWNER},
+                                  body='/keno approve ' + b.digest(self.issue) + ' codex'))
         self.posts = []
         self.fail_post = False
         self.prs = []
@@ -68,11 +70,19 @@ class BridgeTests(unittest.TestCase):
     @contextlib.contextmanager
     def execution(self, supervise=None):
         self.original_git = b.git
+
+        def run(args, log, timeout, **kwargs):
+            if '/runner/smoke.py' in args:
+                log.write_text('{"record_a_zero":1099511627776,"core_tests":16,'
+                               '"layouts":{"any-payout":595,"net-profit":595},'
+                               '"integrity":"ok","foreign_key_errors":0,"temporary_fixture_removed":true}\n')
+            return supervise(args, log, timeout, **kwargs) if supervise else 0
+
         with patch.object(b, 'git', side_effect=self.adapter), \
-             patch.object(b, 'sandbox', side_effect=lambda work, codex, socket: ['sandbox', str(socket)]), \
+             patch.object(b, 'sandbox', side_effect=lambda work, codex, socket, **kw: ['sandbox', str(socket), str(work), str(kw)]), \
              patch.object(b, 'preflight', return_value=Path('/bin/true')), \
              patch.object(b, 'Gateway') as gateway, \
-             patch.object(b, 'supervise', side_effect=supervise or (lambda *a, **k: 0)):
+             patch.object(b, 'supervise', side_effect=run):
             gateway.return_value.__enter__.return_value.path = self.state / 'api.sock'
             yield
 
@@ -114,6 +124,14 @@ class BridgeTests(unittest.TestCase):
         exact = dict(id=11, user={'login': b.OWNER}, body='/keno approve ' + b.digest(issue))
         self.assertEqual(b.approved(issue, [legacy, exact]), exact['id'])
         self.assertEqual(b.approved(issue, [exact, legacy]), exact['id'])
+
+    def test_approval_cannot_be_used_for_the_other_mode(self):
+        for approved_mode, smoke in [('smoke', False), ('codex', True), ('', False)]:
+            self.gh.comments = [dict(id=11, user={'login': b.OWNER},
+                                     body=f'/keno approve {b.digest(self.gh.issue)} {approved_mode}'.strip())]
+            with self.assertRaisesRegex(b.Blocked, 'No owner approval'):
+                self.run_fixture(smoke=smoke)
+            self.assertFalse((self.state / 'runs.sqlite').exists())
 
     def test_supervisor_digest_required_before_any_reservation(self):
         with self.assertRaises(b.Blocked):
@@ -167,6 +185,8 @@ class BridgeTests(unittest.TestCase):
         def check_socket(args, *unused, **kwargs):
             if '/runner/smoke.py' in args:
                 self.assertEqual(Path(args[1]).name, 'empty')
+                self.assertEqual(Path(args[2]).name, 'smoke-source')
+                self.assertIn("'read_only': True", args[3])
             return 0
 
         with self.execution(check_socket):
@@ -178,6 +198,17 @@ class BridgeTests(unittest.TestCase):
         self.assertEqual(len(self.gh.posts), 1)
         self.assertEqual(before, self.private.read_bytes())
         self.assertEqual(self.rawgit('status', '--porcelain', cwd=self.repo), '')
+
+    def test_smoke_requires_structured_result_even_on_zero_exit(self):
+        def skip_checks(args, log, timeout, **kwargs):
+            if '/runner/smoke.py' in args:
+                log.write_text('')
+            return 0
+
+        with self.execution(skip_checks):
+            result = self.run_fixture(smoke=True)
+        self.assertEqual(result['status'], 'blocked')
+        self.assertNotIn('smoke_verified', result)
 
     def test_failed_namespace_probe_never_starts_codex(self):
         calls = []
@@ -269,9 +300,13 @@ class BridgeTests(unittest.TestCase):
             b.source_inventory(self.repo)
 
     def test_publish_requires_review_and_never_merges(self):
+        (self.repo / '.gitignore').write_text('/docs/new.md\n')
+        self.rawgit('add', '.gitignore', cwd=self.repo)
+        self.rawgit('commit', '-m', 'fixture allowlist', cwd=self.repo)
+
         def edit(args, *a, **kw):
             if '/bin/true' not in args:
-                (self.work() / 'docs/test.md').write_text('source change\n')
+                (self.work() / 'docs/new.md').write_text('source change\n')
             return 0
         with self.execution(edit):
             result = self.run_fixture()
@@ -289,8 +324,29 @@ class BridgeTests(unittest.TestCase):
             report = b.publish(self.state, self.gh, result['key'], result['review_sha256'])
         self.assertEqual(report['status'], 'pr-opened')
         self.assertTrue(self.gh.prs[0]['draft'])
+        self.assertEqual(self.rawgit('show', '--format=', '--name-only', 'HEAD', cwd=self.work()).strip(),
+                         'docs/new.md')
         self.assertFalse(any('merge' in args or '--force' in args or 'reset' in args for args in calls))
         self.assertEqual(self.private.read_bytes(), b'private sentinel')
+
+    def test_staging_failure_keeps_run_awaiting_review(self):
+        (self.repo / '.gitignore').write_text('*\n!/docs/\n!/docs/test.md\n')
+        self.rawgit('add', '-f', '.gitignore', cwd=self.repo)
+        self.rawgit('commit', '-m', 'fixture allowlist', cwd=self.repo)
+
+        def edit(args, *unused, **kwargs):
+            if '/runner/relay.py' in args:
+                (self.work() / 'docs/new.md').write_text('new text with trailing space \n')
+            return 0
+
+        with self.execution(edit):
+            result = self.run_fixture()
+        key = result['key']
+        with self.assertRaises(b.Blocked):
+            b.publish(self.state, self.gh, key, result['review_sha256'])
+        with b.ledger(self.state) as db:
+            self.assertEqual(db.execute('SELECT status FROM runs WHERE key=?', (key,)).fetchone()[0],
+                             'awaiting-source-review')
 
     def test_assignment_edit_blocks_publication(self):
         def edit(args, *a, **kw):

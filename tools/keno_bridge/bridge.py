@@ -77,23 +77,23 @@ def digest(issue):
     return hashlib.sha256(json.dumps(payload, sort_keys=True).encode()).hexdigest()
 
 
-def approved(issue, comments):
+def approved(issue, comments, mode='smoke'):
     expected = '/keno approve ' + digest(issue)
     legacy_id = None
     for comment in comments:
         if comment.get('user', {}).get('login') != OWNER:
             continue
         body = comment.get('body', '').strip()
-        if body == expected:
+        if body == f'{expected} {mode}' or (mode == 'smoke' and body == expected):
             return comment['id']
         # One explicit legacy approval, independently inspected for the initial assignment.
         # Keep looking for an exact approval before using this fallback.
-        if (issue['number'] == 1 and comment['id'] == 6784188375 and
+        if (mode == 'smoke' and issue['number'] == 1 and comment['id'] == 6784188375 and
                 body.startswith('**OWNER APPROVAL — EXECUTE ISSUE #1**')):
             legacy_id = comment['id']
     if legacy_id is not None:
         return legacy_id
-    raise Blocked('No owner approval for this assignment revision')
+    raise Blocked(f'No owner approval for this assignment revision in {mode} mode')
 
 
 def checked_state(path):
@@ -245,12 +245,10 @@ def recover_preflight(db, state, key, issue, sha):
     changes, _ = collect_changes(folder / 'worktree', baseline)
     if changes:
         raise Blocked('Original worktree changed; preserve and inspect it manually')
-    with db:
-        db.execute("UPDATE runs SET status='reserved',posted=0 WHERE key=?", (key,))
     return old
 
 
-def sandbox(work, codex, gateway_socket):
+def sandbox(work, codex, gateway_socket, *, read_only=False):
     bwrap = shutil.which('bwrap')
     if not bwrap:
         raise Blocked('Bubblewrap is required; there is no unsandboxed fallback')
@@ -270,7 +268,7 @@ def sandbox(work, codex, gateway_socket):
     for location in ('/etc/ssl/certs', '/etc/resolv.conf', '/etc/hosts', '/etc/nsswitch.conf'):
         if Path(location).exists():
             args += ['--ro-bind', location, location]
-    args += ['--ro-bind', str(codex), '/runner/codex', '--bind', str(work), '/work',
+    args += ['--ro-bind', str(codex), '/runner/codex', '--ro-bind' if read_only else '--bind', str(work), '/work',
              '--ro-bind', str(empty), '/work/.git', '--dir', '/agent-home',
              '--dir', '/agent-home/.codex', '--setenv', 'HOME', '/agent-home',
              '--setenv', 'CODEX_HOME', '/agent-home/.codex',
@@ -368,9 +366,10 @@ def publish_report(gh, db, key):
 def execute(state, gh, issue_number, approval, codex, timeout, smoke=False, recovery_key=None):
     issue, comments = gh.assignment(issue_number)
     sha = digest(issue)
-    approval_id = approved(issue, comments)
     if approval != sha:
         raise Blocked('Supervised approval must equal the inspected assignment SHA-256')
+    if not recovery_key:
+        approval_id = approved(issue, comments, 'smoke' if smoke else 'codex')
     codex = preflight(codex)
     with locked(state), ledger(state) as db:
         if recovery_key:
@@ -379,6 +378,9 @@ def execute(state, gh, issue_number, approval, codex, timeout, smoke=False, reco
             old = recover_preflight(db, state, recovery_key, issue_number, sha)
             key = recovery_key
             smoke = old['mode'] == 'smoke'
+            approval_id = approved(issue, comments, old['mode'])
+            with db:
+                db.execute("UPDATE runs SET status='reserved',posted=0 WHERE key=?", (key,))
         else:
             key = reserve(db, issue_number, sha)
         report = dict(key=key, digest=sha, issue=issue_number, approval_comment=approval_id,
@@ -421,13 +423,23 @@ def execute(state, gh, issue_number, approval, codex, timeout, smoke=False, reco
                                        '-c', 'model_providers.keno_bridge.wire_api="responses"', '-'], folder / 'codex.log', timeout, input=prompt)
             if rc:
                 raise Blocked(f'Codex returned exit {rc}')
-            if smoke:
-                if supervise(offline_args + ['/usr/bin/python3', '/runner/smoke.py'], folder / 'smoke.log', timeout):
-                    raise Blocked('Deterministic smoke verification failed')
-                report['smoke_verified'] = True
             changes, revision = collect_changes(work, baseline)
-            if smoke and changes:
-                raise Blocked('Smoke changed source files')
+            if smoke:
+                if changes:
+                    raise Blocked('Smoke changed source files')
+                pristine = folder / 'smoke-source'
+                git('worktree', 'add', '--detach', str(pristine), report['base'], cwd=repo)
+                smoke_args = sandbox(pristine, codex, folder / 'empty', read_only=True)
+                smoke_log = folder / 'smoke.log'
+                if supervise(smoke_args + ['/usr/bin/python3', '/runner/smoke.py'], smoke_log, timeout):
+                    raise Blocked('Deterministic smoke verification failed')
+                lines = smoke_log.read_text().splitlines()
+                expected = dict(record_a_zero=1099511627776, core_tests=16,
+                                layouts={'any-payout': 595, 'net-profit': 595},
+                                integrity='ok', foreign_key_errors=0, temporary_fixture_removed=True)
+                if not lines or json.loads(lines[-1]) != expected:
+                    raise Blocked('Deterministic smoke did not produce the expected verification result')
+                report['smoke_verified'] = True
             report.update(status='awaiting-source-review' if changes else 'completed-no-source-changes',
                           changes=changes, review_sha256=revision)
         except subprocess.TimeoutExpired:
@@ -462,12 +474,25 @@ def publish(state, gh, key, review):
         issue, comments = gh.assignment(row['issue'])
         if digest(issue) != row['digest']:
             raise Blocked('Assignment changed; publication refused')
-        approved(issue, comments)
+        approved(issue, comments, 'codex')
+        staged = git('diff', '--cached', '--name-only', '--no-renames', '-z', cwd=work)
+        if set(filter(None, staged.split('\0'))) - set(changes):
+            raise Blocked('Index contains paths outside the reviewed changes')
+        git('--literal-pathspecs', 'add', '-f', '--', *changes, cwd=work)
+        staged = git('diff', '--cached', '--name-only', '--no-renames', '-z', cwd=work)
+        if sorted(filter(None, staged.split('\0'))) != changes:
+            raise Blocked('Staged paths do not match the reviewed changes')
+        for path in changes:
+            if (work / path).is_file():
+                blob = git('hash-object', '--no-filters', '--', path, cwd=work).strip()
+                if git('rev-parse', ':' + path, cwd=work).strip() != blob:
+                    raise Blocked('Staged content does not match the reviewed file')
+        if collect_changes(work, baseline) != (changes, revision):
+            raise Blocked('Reviewed files changed during staging')
+        git('diff', '--cached', '--check', cwd=work)
         # Mark publication intent before side effects. An interrupted publication never reruns Codex.
         with db:
             db.execute("UPDATE runs SET status='publishing' WHERE key=?", (key,))
-        git('add', '--', *changes, cwd=work)
-        git('diff', '--cached', '--check', cwd=work)
         git('-c', 'user.name=Keno supervised bridge', '-c', 'user.email=keno-bridge@users.noreply.github.com',
             'commit', '-m', f'Implement approved Keno assignment #{row["issue"]}', cwd=work)
         branch = 'bridge/' + key
@@ -491,6 +516,7 @@ def main():
     parser.add_argument('--state', type=Path, default=Path.home() / '.local/state/keno-bridge')
     sub = parser.add_subparsers(dest='action', required=True)
     inspect = sub.add_parser('inspect'); inspect.add_argument('--issue', type=int, required=True)
+    inspect.add_argument('--mode', choices=('smoke', 'codex'), default='smoke')
     run = sub.add_parser('run'); run.add_argument('--issue', type=int, required=True)
     run.add_argument('--approve', required=True, help='Exact assignment SHA-256 after local review')
     run.add_argument('--codex-bin', type=Path)
@@ -511,8 +537,12 @@ def main():
         gh = GitHub()
         if args.action == 'inspect':
             issue, comments = gh.assignment(args.issue)
+            try:
+                approval_comment = approved(issue, comments, args.mode)
+            except Blocked:
+                approval_comment = None
             print(json.dumps({'issue': issue, 'assignment_sha256': digest(issue),
-                              'approval_comment': approved(issue, comments)}, indent=2))
+                              'mode': args.mode, 'approval_comment': approval_comment}, indent=2))
         elif args.action in ('run', 'resume-preflight'):
             if not 1 <= args.timeout <= 3600:
                 raise Blocked('Timeout must be 1–3600 seconds')

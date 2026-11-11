@@ -33,13 +33,14 @@ If the path already exists, inspect it first; do not overwrite it or reset it. U
 
 ## Approval and supervised execution
 
-`inspect` retrieves the open issue and all comments and prints its current title, body, assignment digest and approval comment ID. Read these before authorizing a run. For new assignments, the repository owner must post exactly:
+`inspect` retrieves the open issue and all comments and prints its current title, body, assignment digest and approval comment ID for the selected mode, if present. Read these before authorizing a run. For new assignments, the repository owner must post exactly:
 
 ```text
-/keno approve ASSIGNMENT_SHA256
+/keno approve ASSIGNMENT_SHA256 smoke
+/keno approve ASSIGNMENT_SHA256 codex
 ```
 
-The digest binds repository, issue number, title and body. Quoted approvals, other authors, label-only approval, closed issues and pull requests do not qualify. Editing the title/body requires new approval. Issue #1 alone also accepts the existing owner approval comment `6784188375`; this narrowly scoped compatibility exception still requires the supervisor to approve the exact current digest at the terminal. Comments other than the selected approval are not executed or added to the assignment prompt.
+Post the line for the intended mode. The digest binds repository, issue number, title and body, and the last word binds the execution mode. Use `inspect --mode codex` to check implementation approval. A mode mismatch blocks execution before reservation. Quoted approvals, other authors, label-only approval, closed issues and pull requests do not qualify. Editing the title/body requires new approval. Existing digest-only approvals and the legacy Issue #1 comment `6784188375` are accepted only for smoke runs. The supervisor still supplies the exact current digest at the terminal. Comments other than the selected approval are not executed or added to the assignment prompt.
 
 Set `assignment_sha` to the digest printed by `inspect`. The exact smoke command, from the separate source checkout, is:
 
@@ -47,7 +48,7 @@ Set `assignment_sha` to the digest printed by `inspect`. The exact smoke command
 python3 -m tools.keno_bridge.bridge run --issue 1 --approve "$assignment_sha" --smoke --timeout 300
 ```
 
-Codex CLI must be on PATH, or supply `--codex-bin /absolute/path/to/codex`. Standard npm launchers are resolved to their native Linux binary. Executable presence, required CLI flags and Bubblewrap availability are checked before an assignment is reserved. The isolated home and masked project `.codex` configuration enforce configuration isolation without relying on Cloud-only CLI flags. The bridge refuses an unavailable or failing sandbox. It does not retry with weaker permissions. A completed smoke requires Codex to return successfully, the trusted deterministic Record A/core-regression/synthetic checker to pass, and no source-file changes. The checker uses a temporary SQLite database, independently replays all 595 layouts under each objective, and checks integrity and foreign keys.
+Codex CLI must be on PATH, or supply `--codex-bin /absolute/path/to/codex`. Standard npm launchers are resolved to their native Linux binary. Executable presence, required CLI flags and Bubblewrap availability are checked before an assignment is reserved. The isolated home and masked project `.codex` configuration enforce configuration isolation without relying on Cloud-only CLI flags. The bridge refuses an unavailable or failing sandbox. It does not retry with weaker permissions. A completed smoke requires Codex to return successfully, the trusted deterministic Record A/core-regression/synthetic checker to pass, and no source-file changes. The checker runs against a separate read-only checkout of the same base commit and must emit the expected verification result. It uses a temporary SQLite database, independently replays all 595 layouts under each objective, and checks integrity and foreign keys.
 
 The real assignment command (after the smoke succeeds and the supervisor reviews the assignment again) is:
 
@@ -77,7 +78,7 @@ For source changes, inspect the private worktree diff, every new file, test outp
 python3 -m tools.keno_bridge.bridge publish --run RUN_KEY --review REVIEW_SHA256
 ```
 
-Only this separate command stages the approved source paths, commits, pushes a new branch without force, and creates a draft PR. It checks that the issue and approval remain current. It posts the PR URL to the issue. It never merges, closes the issue, rewrites the permanent workspace or pushes to `main`. If publication is interrupted, the ledger remains `publishing`: inspect GitHub and the retained branch manually; never rerun Codex to repair a publishing failure.
+Only this separate command stages the approved source paths, commits, pushes a new branch without force, and creates a draft PR. It checks that the issue and implementation approval remain current. It explicitly stages only the reviewed paths, including new files ignored by default, and verifies the staged paths and bytes before reserving publication. The source archive still follows `publication-files.txt`. It posts the PR URL to the issue. It never merges, closes the issue, rewrites the permanent workspace or pushes to `main`. If publication is interrupted, the ledger remains `publishing`: inspect GitHub and the retained branch manually; never rerun Codex to repair a publishing failure.
 
 Review source with `git -C WORKTREE diff` and open each listed untracked file. No arbitrary shell command is constructed from issue text. The publisher disables Git hooks/fsmonitor, uses a new source clone and gives the agent no GitHub credentials. Publication on SynFart requires a working host `gh` account with write access. Installation of the bridge alone does not prove an issue triggered Codex.
 
