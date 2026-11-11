@@ -79,6 +79,7 @@ def digest(issue):
 
 def approved(issue, comments):
     expected = '/keno approve ' + digest(issue)
+    legacy_id = None
     for comment in comments:
         if comment.get('user', {}).get('login') != OWNER:
             continue
@@ -86,10 +87,12 @@ def approved(issue, comments):
         if body == expected:
             return comment['id']
         # One explicit legacy approval, independently inspected for the initial assignment.
-        # The supervised --approve digest still binds the current issue body.
+        # Keep looking for an exact approval before using this fallback.
         if (issue['number'] == 1 and comment['id'] == 6784188375 and
                 body.startswith('**OWNER APPROVAL — EXECUTE ISSUE #1**')):
-            return comment['id']
+            legacy_id = comment['id']
+    if legacy_id is not None:
+        return legacy_id
     raise Blocked('No owner approval for this assignment revision')
 
 

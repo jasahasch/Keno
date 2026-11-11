@@ -107,6 +107,14 @@ class BridgeTests(unittest.TestCase):
         with self.assertRaises(b.Blocked):
             b.approved(issue, [comment])
 
+    def test_exact_digest_approval_takes_precedence_over_legacy_comment(self):
+        issue = dict(self.gh.issue, number=1)
+        legacy = dict(id=6784188375, user={'login': b.OWNER},
+                      body='**OWNER APPROVAL — EXECUTE ISSUE #1**')
+        exact = dict(id=11, user={'login': b.OWNER}, body='/keno approve ' + b.digest(issue))
+        self.assertEqual(b.approved(issue, [legacy, exact]), exact['id'])
+        self.assertEqual(b.approved(issue, [exact, legacy]), exact['id'])
+
     def test_supervisor_digest_required_before_any_reservation(self):
         with self.assertRaises(b.Blocked):
             b.execute(self.state, self.gh, 9, 'wrong', Path('/bin/true'), 1)
