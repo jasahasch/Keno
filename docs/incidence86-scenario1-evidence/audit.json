@@ -1,0 +1,227 @@
+{
+  "structural_checks": "passed",
+  "before": {
+    "certified-no-improvement": 568,
+    "open-resource-limit": 157
+  },
+  "after": {
+    "certified-no-improvement": 575,
+    "open-resource-limit": 150
+  },
+  "attempted": 157,
+  "newly_certified": 7,
+  "unattempted": 0,
+  "arithmetic_records": 7,
+  "separate_replay": [
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          4,
+          5
+        ]
+      ],
+      "lower": 6682432241664,
+      "combined_totals": 44
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          5,
+          6
+        ]
+      ],
+      "lower": 7207894646784,
+      "combined_totals": 44
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          5,
+          7
+        ],
+        [
+          6,
+          7
+        ]
+      ],
+      "lower": 7289431916544,
+      "combined_totals": 44
+    },
+    {
+      "shape": [
+        [
+          0,
+          1,
+          5
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          4,
+          5
+        ]
+      ],
+      "lower": 8092121038848,
+      "combined_totals": 44
+    },
+    {
+      "shape": [
+        [
+          0,
+          1,
+          6
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          5,
+          6
+        ]
+      ],
+      "lower": 8744872181760,
+      "combined_totals": 44
+    },
+    {
+      "shape": [
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          4,
+          5
+        ]
+      ],
+      "lower": 4855997399040,
+      "combined_totals": 43
+    },
+    {
+      "shape": [
+        [
+          0,
+          6
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          5,
+          6
+        ]
+      ],
+      "lower": 5014542090240,
+      "combined_totals": 43
+    }
+  ],
+  "separate_replay_complete": true,
+  "elapsed_seconds": 119.7539380249982,
+  "separate_replay_sessions_seconds": [
+    100.01673027099969,
+    19.73720775399852
+  ]
+}

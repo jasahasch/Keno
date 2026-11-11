@@ -1,0 +1,13 @@
+{
+  "started_utc": "2026-11-11T19:58:06+00:00",
+  "persisted_utc": "2026-11-11T20:09:36.144038+00:00",
+  "outer_elapsed_seconds": 690.144038,
+  "outer_limit_seconds": 900,
+  "initial_census_seconds": 349.285240348001,
+  "concurrent_strict_replay_seconds": 108.48036381600105,
+  "separate_audit_seconds": 119.7539380249982,
+  "conservative_computational_seconds": 579.5175421890003,
+  "computational_cap_seconds": 600,
+  "priority_active_including_separate_audit_and_fixtures_seconds": 326.4992616919994,
+  "priority_cap_seconds": 350
+}

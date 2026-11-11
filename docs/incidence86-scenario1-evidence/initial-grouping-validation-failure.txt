@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/work/tools/validate_incidence86_attachments.py", line 36, in <module>
+    ordinary=envelope(g,False);packed=envelope(g,True)
+             ^^^^^^^^^^^^^^^^^
+  File "<attachment-validator>", line 112, in envelope
+  File "<attachment-validator>", line 111, in fixed
+  File "<attachment-validator>", line 74, in card
+AssertionError: unequal full attachment constraints
