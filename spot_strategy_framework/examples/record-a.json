@@ -1,0 +1,30 @@
+{
+  "active_cards": [
+    20
+  ],
+  "spot_counts": [
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4
+  ],
+  "family": "disjoint",
+  "objective": "frequency",
+  "max_candidates": 1
+}

@@ -1,0 +1,19 @@
+{
+  "proposed_game": "4 Card Cleopatra Keno",
+  "status": "unverified, deliberately not registrable",
+  "intended_card_count_from_project_name": 4,
+  "unverified": {
+    "manufacturer_and_exact_title": null,
+    "rules_version_and_published_source": null,
+    "number_universe": null,
+    "base_draw_count_and_sampling_rule": null,
+    "official_active_card_count": null,
+    "permitted_spot_sizes": null,
+    "duplicate_and_overlap_rules": null,
+    "wager_and_payout_units": null,
+    "base_and_zero_hit_awards": null,
+    "bonus_trigger_and_bonus_draw_mechanics": null,
+    "multipliers_and_award_interactions": null,
+    "paytable_versions_and_sources": null
+  }
+}

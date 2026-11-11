@@ -1,0 +1,1914 @@
+[
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "largest_marked_component": 2,
+    "combined_marked_totals": 44,
+    "lower": 9111638900736,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "largest_marked_component": 2,
+    "combined_marked_totals": 46,
+    "lower": 11215233351680,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        6,
+        7
+      ]
+    ],
+    "largest_marked_component": 2,
+    "combined_marked_totals": 46,
+    "lower": 16216592744448,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        8,
+        9
+      ]
+    ],
+    "largest_marked_component": 2,
+    "combined_marked_totals": 46,
+    "lower": 21859791667200,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        3,
+        4
+      ]
+    ],
+    "largest_marked_component": 3,
+    "combined_marked_totals": 39,
+    "lower": 11391058575360,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "largest_marked_component": 3,
+    "combined_marked_totals": 39,
+    "lower": 8286602526720,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "largest_marked_component": 3,
+    "combined_marked_totals": 39,
+    "lower": 8497592795136,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "largest_marked_component": 3,
+    "combined_marked_totals": 41,
+    "lower": 10216653455360,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        4,
+        5,
+        6
+      ]
+    ],
+    "largest_marked_component": 3,
+    "combined_marked_totals": 46,
+    "lower": 19798004072448,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        5,
+        6
+      ]
+    ],
+    "largest_marked_component": 3,
+    "combined_marked_totals": 46,
+    "lower": 12025740656640,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        3,
+        4
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "largest_marked_component": 3,
+    "combined_marked_totals": 41,
+    "lower": 12278237757440,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "largest_marked_component": 3,
+    "combined_marked_totals": 40,
+    "lower": 7349762785280,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        5,
+        6
+      ]
+    ],
+    "largest_marked_component": 3,
+    "combined_marked_totals": 46,
+    "lower": 15277332889600,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        3,
+        4,
+        5
+      ]
+    ],
+    "largest_marked_component": 3,
+    "combined_marked_totals": 46,
+    "lower": 18813634478080,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "largest_marked_component": 3,
+    "combined_marked_totals": 46,
+    "lower": 10964246200320,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        6,
+        7,
+        8
+      ]
+    ],
+    "largest_marked_component": 3,
+    "combined_marked_totals": 46,
+    "lower": 26131548340224,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        6,
+        8
+      ],
+      [
+        7,
+        8
+      ]
+    ],
+    "largest_marked_component": 3,
+    "combined_marked_totals": 46,
+    "lower": 17013664382976,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        4,
+        5,
+        6
+      ],
+      [
+        5,
+        6
+      ]
+    ],
+    "largest_marked_component": 3,
+    "combined_marked_totals": 46,
+    "lower": 18723624714240,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        5,
+        6
+      ]
+    ],
+    "largest_marked_component": 3,
+    "combined_marked_totals": 45,
+    "lower": 8727658758144,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        3,
+        4
+      ],
+      [
+        2,
+        3,
+        4
+      ]
+    ],
+    "largest_marked_component": 3,
+    "combined_marked_totals": 41,
+    "lower": 10617159155712,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        3,
+        4
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "largest_marked_component": 3,
+    "combined_marked_totals": 40,
+    "lower": 9586367004672,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        3,
+        4
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "largest_marked_component": 3,
+    "combined_marked_totals": 39,
+    "lower": 9557375975424,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        3,
+        4
+      ],
+      [
+        5,
+        6,
+        7
+      ]
+    ],
+    "largest_marked_component": 3,
+    "combined_marked_totals": 46,
+    "lower": 31793759649792,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        3,
+        4
+      ],
+      [
+        5,
+        7
+      ],
+      [
+        6,
+        7
+      ]
+    ],
+    "largest_marked_component": 3,
+    "combined_marked_totals": 46,
+    "lower": 20751744761856,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "largest_marked_component": 3,
+    "combined_marked_totals": 38,
+    "lower": 7681012137984,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "largest_marked_component": 3,
+    "combined_marked_totals": 39,
+    "lower": 7768522096640,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        5,
+        7
+      ],
+      [
+        6,
+        7
+      ]
+    ],
+    "largest_marked_component": 3,
+    "combined_marked_totals": 46,
+    "lower": 13027843768320,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1,
+        2
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        3,
+        4,
+        5
+      ]
+    ],
+    "largest_marked_component": 3,
+    "combined_marked_totals": 46,
+    "lower": 22929588879360,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1,
+        2
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "largest_marked_component": 3,
+    "combined_marked_totals": 46,
+    "lower": 13347953049600,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1,
+        2
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "largest_marked_component": 3,
+    "combined_marked_totals": 45,
+    "lower": 10991223963648,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "largest_marked_component": 3,
+    "combined_marked_totals": 45,
+    "lower": 7924214661120,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "largest_marked_component": 4,
+    "combined_marked_totals": 45,
+    "lower": 9550128218112,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "largest_marked_component": 4,
+    "combined_marked_totals": 46,
+    "lower": 11125307473920,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        3,
+        4,
+        5
+      ]
+    ],
+    "largest_marked_component": 4,
+    "combined_marked_totals": 46,
+    "lower": 24969429909504,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        3,
+        5
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "largest_marked_component": 4,
+    "combined_marked_totals": 46,
+    "lower": 13601624555520,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "largest_marked_component": 4,
+    "combined_marked_totals": 45,
+    "lower": 7730941132800,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1,
+        3
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "largest_marked_component": 4,
+    "combined_marked_totals": 46,
+    "lower": 11308514672640,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "largest_marked_component": 4,
+    "combined_marked_totals": 46,
+    "lower": 10493141975040,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "largest_marked_component": 4,
+    "combined_marked_totals": 45,
+    "lower": 9309610049536,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "largest_marked_component": 4,
+    "combined_marked_totals": 44,
+    "lower": 9120094617600,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        6,
+        7
+      ]
+    ],
+    "largest_marked_component": 4,
+    "combined_marked_totals": 46,
+    "lower": 16178542018560,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        4,
+        5,
+        6
+      ]
+    ],
+    "largest_marked_component": 4,
+    "combined_marked_totals": 46,
+    "lower": 19891318947840,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        5,
+        6
+      ]
+    ],
+    "largest_marked_component": 4,
+    "combined_marked_totals": 46,
+    "lower": 11929355550720,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        4,
+        5,
+        6,
+        7
+      ]
+    ],
+    "largest_marked_component": 4,
+    "combined_marked_totals": 46,
+    "lower": 32717395722240,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        4,
+        5,
+        7
+      ],
+      [
+        6,
+        7
+      ]
+    ],
+    "largest_marked_component": 4,
+    "combined_marked_totals": 46,
+    "lower": 20423330758656,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        5,
+        7
+      ],
+      [
+        6,
+        7
+      ]
+    ],
+    "largest_marked_component": 4,
+    "combined_marked_totals": 45,
+    "lower": 9197404028928,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        3,
+        4
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "largest_marked_component": 4,
+    "combined_marked_totals": 46,
+    "lower": 11811831152640,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        3,
+        4,
+        5
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "largest_marked_component": 4,
+    "combined_marked_totals": 46,
+    "lower": 23783213629440,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        3,
+        5
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "largest_marked_component": 4,
+    "combined_marked_totals": 45,
+    "lower": 10494752587776,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        3,
+        5
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "largest_marked_component": 4,
+    "combined_marked_totals": 45,
+    "lower": 11010551316480,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        4,
+        5
+      ],
+      [
+        3,
+        4,
+        5
+      ]
+    ],
+    "largest_marked_component": 4,
+    "combined_marked_totals": 46,
+    "lower": 12387625205760,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "largest_marked_component": 4,
+    "combined_marked_totals": 44,
+    "lower": 8026891223040,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1,
+        2
+      ],
+      [
+        3,
+        4,
+        5,
+        6
+      ]
+    ],
+    "largest_marked_component": 4,
+    "combined_marked_totals": 46,
+    "lower": 39704120524800,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1,
+        2
+      ],
+      [
+        3,
+        4,
+        6
+      ],
+      [
+        5,
+        6
+      ]
+    ],
+    "largest_marked_component": 4,
+    "combined_marked_totals": 46,
+    "lower": 24887213162496,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1,
+        2
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        5,
+        6
+      ]
+    ],
+    "largest_marked_component": 4,
+    "combined_marked_totals": 45,
+    "lower": 11541600534528,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1,
+        2,
+        3
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        5,
+        6
+      ]
+    ],
+    "largest_marked_component": 4,
+    "combined_marked_totals": 46,
+    "lower": 26106195345408,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1,
+        3
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        5,
+        6
+      ]
+    ],
+    "largest_marked_component": 4,
+    "combined_marked_totals": 46,
+    "lower": 14765040599040,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        5,
+        6
+      ]
+    ],
+    "largest_marked_component": 4,
+    "combined_marked_totals": 45,
+    "lower": 8330391060480,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "largest_marked_component": 5,
+    "combined_marked_totals": 40,
+    "lower": 8967891714048,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        3,
+        4
+      ]
+    ],
+    "largest_marked_component": 5,
+    "combined_marked_totals": 40,
+    "lower": 12364673974272,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "largest_marked_component": 5,
+    "combined_marked_totals": 39,
+    "lower": 7742215421952,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1,
+        2
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "largest_marked_component": 5,
+    "combined_marked_totals": 41,
+    "lower": 12353936556032,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1,
+        4
+      ],
+      [
+        2,
+        3,
+        4
+      ]
+    ],
+    "largest_marked_component": 5,
+    "combined_marked_totals": 41,
+    "lower": 14082929328128,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1,
+        4
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "largest_marked_component": 5,
+    "combined_marked_totals": 40,
+    "lower": 9031242481664,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "largest_marked_component": 5,
+    "combined_marked_totals": 40,
+    "lower": 8961449263104,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "largest_marked_component": 5,
+    "combined_marked_totals": 41,
+    "lower": 12109660291072,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "largest_marked_component": 5,
+    "combined_marked_totals": 41,
+    "lower": 10783589138432,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "largest_marked_component": 5,
+    "combined_marked_totals": 40,
+    "lower": 8515846406144,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        3,
+        4
+      ]
+    ],
+    "largest_marked_component": 5,
+    "combined_marked_totals": 41,
+    "lower": 12555263148032,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        3,
+        4
+      ]
+    ],
+    "largest_marked_component": 5,
+    "combined_marked_totals": 40,
+    "lower": 10401337049088,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "largest_marked_component": 5,
+    "combined_marked_totals": 39,
+    "lower": 7886365261824,
+    "status": "certified",
+    "proof": "coefficientwise minimum at fixed component and combined incidence totals; exact packed-integer replay"
+  }
+]

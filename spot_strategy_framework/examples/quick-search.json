@@ -1,0 +1,14 @@
+{
+  "active_cards": [
+    2,
+    3,
+    4
+  ],
+  "spot_min": 2,
+  "spot_max": 5,
+  "family": "mixed",
+  "objective": "profitability",
+  "pool_size": 8,
+  "max_candidates": 12,
+  "seed": 20261109
+}

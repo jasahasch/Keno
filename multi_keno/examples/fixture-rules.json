@@ -1,0 +1,26 @@
+{
+  "game": "synthetic-mini",
+  "name": "Synthetic six-number fixture",
+  "version": "v1",
+  "universe": 6,
+  "draw": 3,
+  "cards": 2,
+  "sizes": [
+    2,
+    3
+  ],
+  "duplicates": false,
+  "overlap": true,
+  "wager": 1,
+  "unit": "test-credit",
+  "mechanics": {
+    "draw": "uniform-without-replacement",
+    "award": "additive-hit-count",
+    "bonus": null,
+    "multiplier": null
+  },
+  "objectives": [
+    "any-payout",
+    "net-profit"
+  ]
+}

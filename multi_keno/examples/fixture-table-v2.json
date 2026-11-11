@@ -1,0 +1,19 @@
+{
+  "id": "test-awards",
+  "version": "v2",
+  "source": "Explicit synthetic test fixture; no commercial game rules.",
+  "payouts": {
+    "2": [
+      0,
+      0,
+      0
+    ],
+    "3": [
+      0,
+      0,
+      1,
+      5
+    ]
+  },
+  "bonus": null
+}

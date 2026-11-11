@@ -1,0 +1,10 @@
+{
+  "active_cards": [
+    20
+  ],
+  "spot_min": 2,
+  "spot_max": 2,
+  "family": "repeated_pairs",
+  "objective": "profitability",
+  "max_candidates": 10
+}

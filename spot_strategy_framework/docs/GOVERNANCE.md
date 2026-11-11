@@ -1,0 +1,11 @@
+# Governance, provenance and source precedence
+
+The latest attached implementation directive governs this work. Prior user objectives remain separate research tracks. No applicable AGENTS.md was found in the project or its ancestor directories. This workspace has no usable Git repository; immutable source-content hashes and source ZIP snapshots provide revisions. Existing files, including untracked work, are treated as protected.
+
+The initial preservation manifest covers 8,027 pre-existing work/output files. A separate inventory records 40 historical reports, provenance and governance documents. The current Scenario 1 README, accepted checkpoints, evaluators, graph certificate and source audit evidence were reviewed. Historical files are registered and preserved; this delivery does not claim to re-prove every historical certificate or rerun every past search. Missing centralized governance and machine-manufacturer validation are documented gaps, not invented rules.
+
+Scenario 1 is `outputs/keno-expanded-paytables.json`, `tables[0]`, SHA-256 `d12c1a7588b93d8e2fff3061d4c89b8b3a7c9fd6d9b386460952f2b05fe8cbe1`. Zero-hit payouts are explicitly present and zero. Machine limits and linear denomination scaling are user-specified research assumptions. No external IGT table has replaced this table, and no manufacturer certification is implied.
+
+The directive names historical Record B (`pair-1`). The latest repository also contains accepted independent audit evidence for `new-0`. Both are retained. Framework promotion of the newer B requires fresh two-evaluator reproduction against the old full payout law. Likewise, balanced six-eight geometry (`new-11`) has repository verification evidence, while its status in the new archive depends on the new reproduction. The twelve-number recovery variant (`recovery-2`) remains a read-only, evidence-backed historical reference unless explicitly reproduced under an expanded budget.
+
+All new sources live under `spot_strategy_framework`; all new results under `outputs/spot-strategy-framework`. Nothing in the old research is patched. Accepted strategy objects, source snapshots and historical record promotions are versioned, not overwritten. The source register identifies external references, their authority and limited use. There is no new official IGT paytable claim.

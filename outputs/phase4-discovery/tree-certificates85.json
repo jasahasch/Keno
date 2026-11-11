@@ -1,0 +1,509 @@
+[
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "lower": 8740929536000,
+    "status": "certified",
+    "proof": "tree messages conditional on parent shared-number selection; audited exact packed arithmetic"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        3,
+        4,
+        5
+      ]
+    ],
+    "lower": 12001078149120,
+    "status": "certified",
+    "proof": "tree messages conditional on parent shared-number selection; audited exact packed arithmetic"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "lower": 7090722570240,
+    "status": "certified",
+    "proof": "tree messages conditional on parent shared-number selection; audited exact packed arithmetic"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "lower": 8227815161856,
+    "status": "certified",
+    "proof": "tree messages conditional on parent shared-number selection; audited exact packed arithmetic"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        3,
+        5
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "lower": 10007944888320,
+    "status": "certified",
+    "proof": "tree messages conditional on parent shared-number selection; audited exact packed arithmetic"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        3,
+        5
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "lower": 9736153989120,
+    "status": "certified",
+    "proof": "tree messages conditional on parent shared-number selection; audited exact packed arithmetic"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        2,
+        3,
+        4,
+        5
+      ]
+    ],
+    "lower": 22241706246144,
+    "status": "certified",
+    "proof": "tree messages conditional on parent shared-number selection; audited exact packed arithmetic"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        2,
+        3,
+        5
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "lower": 9492146159616,
+    "status": "certified",
+    "proof": "tree messages conditional on parent shared-number selection; audited exact packed arithmetic"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "lower": 7491765141504,
+    "status": "certified",
+    "proof": "tree messages conditional on parent shared-number selection; audited exact packed arithmetic"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1,
+        2
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        3,
+        4,
+        5
+      ]
+    ],
+    "lower": 21073609359360,
+    "status": "certified",
+    "proof": "tree messages conditional on parent shared-number selection; audited exact packed arithmetic"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1,
+        2
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "lower": 9709578878976,
+    "status": "certified",
+    "proof": "tree messages conditional on parent shared-number selection; audited exact packed arithmetic"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    ],
+    "lower": 51262481498112,
+    "status": "certified",
+    "proof": "tree messages conditional on parent shared-number selection; audited exact packed arithmetic"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1,
+        2,
+        3,
+        5
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "lower": 31159467638784,
+    "status": "certified",
+    "proof": "tree messages conditional on parent shared-number selection; audited exact packed arithmetic"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1,
+        2,
+        5
+      ],
+      [
+        3,
+        4,
+        5
+      ]
+    ],
+    "lower": 29546841636864,
+    "status": "certified",
+    "proof": "tree messages conditional on parent shared-number selection; audited exact packed arithmetic"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1,
+        2,
+        5
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "lower": 11984166715392,
+    "status": "certified",
+    "proof": "tree messages conditional on parent shared-number selection; audited exact packed arithmetic"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1,
+        3
+      ],
+      [
+        2,
+        3,
+        5
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "lower": 12798331453440,
+    "status": "certified",
+    "proof": "tree messages conditional on parent shared-number selection; audited exact packed arithmetic"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1,
+        3,
+        5
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "lower": 13813017477120,
+    "status": "certified",
+    "proof": "tree messages conditional on parent shared-number selection; audited exact packed arithmetic"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1,
+        5
+      ],
+      [
+        2,
+        3,
+        5
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "lower": 11366899384320,
+    "status": "certified",
+    "proof": "tree messages conditional on parent shared-number selection; audited exact packed arithmetic"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1,
+        5
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "lower": 8932860887040,
+    "status": "certified",
+    "proof": "tree messages conditional on parent shared-number selection; audited exact packed arithmetic"
+  },
+  {
+    "shape": [
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "lower": 6386482151424,
+    "status": "certified",
+    "proof": "tree messages conditional on parent shared-number selection; audited exact packed arithmetic"
+  },
+  {
+    "shape": [
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2,
+        5
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "lower": 8491955650560,
+    "status": "certified",
+    "proof": "tree messages conditional on parent shared-number selection; audited exact packed arithmetic"
+  },
+  {
+    "shape": [
+      [
+        0,
+        5
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "lower": 5736599912448,
+    "status": "certified",
+    "proof": "tree messages conditional on parent shared-number selection; audited exact packed arithmetic"
+  }
+]

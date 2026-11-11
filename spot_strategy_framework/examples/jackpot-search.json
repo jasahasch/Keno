@@ -1,0 +1,17 @@
+{
+  "active_cards": [
+    20
+  ],
+  "spot_min": 4,
+  "spot_max": 9,
+  "family": "jackpot",
+  "objective": "jackpot",
+  "minimum_frequency": "499999/500000",
+  "require_jackpot": true,
+  "max_candidates": 20,
+  "limits": {
+    "max_operations": 5000000,
+    "max_seconds": 60,
+    "native_max_choices": 16777216
+  }
+}

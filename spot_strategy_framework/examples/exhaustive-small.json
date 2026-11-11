@@ -1,0 +1,11 @@
+{
+  "active_cards": [
+    2
+  ],
+  "spot_min": 2,
+  "spot_max": 2,
+  "family": "exhaustive",
+  "objective": "frequency",
+  "pool_size": 4,
+  "max_candidates": 21
+}

@@ -1,0 +1,1097 @@
+[
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "lower": 6996501725184,
+    "status": "certified",
+    "proof": "incidence-tree messages, conditioning on a cycle number where needed, packed replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        3,
+        4
+      ]
+    ],
+    "lower": 9874666684416,
+    "status": "certified",
+    "proof": "incidence-tree messages, conditioning on a cycle number where needed, packed replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "lower": 5641976414208,
+    "status": "certified",
+    "proof": "incidence-tree messages, conditioning on a cycle number where needed, packed replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1,
+        2
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "lower": 9490535546880,
+    "status": "certified",
+    "proof": "incidence-tree messages, conditioning on a cycle number where needed, packed replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1,
+        4
+      ],
+      [
+        2,
+        3,
+        4
+      ]
+    ],
+    "lower": 11772773793792,
+    "status": "certified",
+    "proof": "incidence-tree messages, conditioning on a cycle number where needed, packed replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1,
+        4
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "lower": 7795365642240,
+    "status": "certified",
+    "proof": "incidence-tree messages, conditioning on a cycle number where needed, packed replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "lower": 6520834097152,
+    "status": "certified",
+    "proof": "incidence-tree messages, conditioning on a cycle number where needed, packed replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "lower": 7612829532160,
+    "status": "certified",
+    "proof": "incidence-tree messages, conditioning on a cycle number where needed, packed replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "lower": 7526930186240,
+    "status": "certified",
+    "proof": "incidence-tree messages, conditioning on a cycle number where needed, packed replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "lower": 6871947673600,
+    "status": "certified",
+    "proof": "incidence-tree messages, conditioning on a cycle number where needed, packed replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        3,
+        4
+      ]
+    ],
+    "lower": 9862318653440,
+    "status": "certified",
+    "proof": "incidence-tree messages, conditioning on a cycle number where needed, packed replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        3,
+        4
+      ]
+    ],
+    "lower": 9033926836224,
+    "status": "certified",
+    "proof": "incidence-tree messages, conditioning on a cycle number where needed, packed replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "lower": 7048846639104,
+    "status": "certified",
+    "proof": "incidence-tree messages, conditioning on a cycle number where needed, packed replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "lower": 6250788028416,
+    "status": "certified",
+    "proof": "incidence-tree messages, conditioning on a cycle number where needed, packed replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "lower": 5564667002880,
+    "status": "certified",
+    "proof": "incidence-tree messages, conditioning on a cycle number where needed, packed replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        5,
+        6
+      ]
+    ],
+    "lower": 9439700582400,
+    "status": "certified",
+    "proof": "incidence-tree messages, conditioning on a cycle number where needed, packed replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2,
+        4
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "lower": 8632884264960,
+    "status": "certified",
+    "proof": "incidence-tree messages, conditioning on a cycle number where needed, packed replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        3,
+        4
+      ]
+    ],
+    "lower": 8168222490624,
+    "status": "certified",
+    "proof": "incidence-tree messages, conditioning on a cycle number where needed, packed replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        3,
+        4
+      ],
+      [
+        2,
+        3,
+        4
+      ]
+    ],
+    "lower": 9823127076864,
+    "status": "certified",
+    "proof": "incidence-tree messages, conditioning on a cycle number where needed, packed replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        3,
+        4
+      ]
+    ],
+    "lower": 8036152246272,
+    "status": "certified",
+    "proof": "incidence-tree messages, conditioning on a cycle number where needed, packed replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "lower": 4707015720960,
+    "status": "certified",
+    "proof": "incidence-tree messages, conditioning on a cycle number where needed, packed replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        3,
+        4
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "lower": 8574902206464,
+    "status": "certified",
+    "proof": "incidence-tree messages, conditioning on a cycle number where needed, packed replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        3,
+        4
+      ],
+      [
+        5,
+        6
+      ]
+    ],
+    "lower": 17422476115968,
+    "status": "certified",
+    "proof": "incidence-tree messages, conditioning on a cycle number where needed, packed replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "lower": 6767794716672,
+    "status": "certified",
+    "proof": "incidence-tree messages, conditioning on a cycle number where needed, packed replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        5,
+        6
+      ]
+    ],
+    "lower": 7747550576640,
+    "status": "certified",
+    "proof": "incidence-tree messages, conditioning on a cycle number where needed, packed replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    ],
+    "lower": 40964324327424,
+    "status": "certified",
+    "proof": "incidence-tree messages, conditioning on a cycle number where needed, packed replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        3,
+        4,
+        6
+      ],
+      [
+        5,
+        6
+      ]
+    ],
+    "lower": 24778949787648,
+    "status": "certified",
+    "proof": "incidence-tree messages, conditioning on a cycle number where needed, packed replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        3,
+        6
+      ],
+      [
+        4,
+        5,
+        6
+      ]
+    ],
+    "lower": 23607078027264,
+    "status": "certified",
+    "proof": "incidence-tree messages, conditioning on a cycle number where needed, packed replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        3,
+        6
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        5,
+        6
+      ]
+    ],
+    "lower": 9393546461184,
+    "status": "certified",
+    "proof": "incidence-tree messages, conditioning on a cycle number where needed, packed replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        4,
+        6
+      ],
+      [
+        5,
+        6
+      ]
+    ],
+    "lower": 10740270366720,
+    "status": "certified",
+    "proof": "incidence-tree messages, conditioning on a cycle number where needed, packed replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        5,
+        6
+      ]
+    ],
+    "lower": 7889636818944,
+    "status": "certified",
+    "proof": "incidence-tree messages, conditioning on a cycle number where needed, packed replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1,
+        2,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "lower": 13589544960000,
+    "status": "certified",
+    "proof": "incidence-tree messages, conditioning on a cycle number where needed, packed replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "lower": 29469783883776,
+    "status": "certified",
+    "proof": "incidence-tree messages, conditioning on a cycle number where needed, packed replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1,
+        2,
+        4
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "lower": 13393587077120,
+    "status": "certified",
+    "proof": "incidence-tree messages, conditioning on a cycle number where needed, packed replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1,
+        2,
+        4
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "lower": 12137577578496,
+    "status": "certified",
+    "proof": "incidence-tree messages, conditioning on a cycle number where needed, packed replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1,
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "lower": 11245298122752,
+    "status": "certified",
+    "proof": "incidence-tree messages, conditioning on a cycle number where needed, packed replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1,
+        3
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        3,
+        4
+      ]
+    ],
+    "lower": 12738604564480,
+    "status": "certified",
+    "proof": "incidence-tree messages, conditioning on a cycle number where needed, packed replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1,
+        3,
+        4
+      ],
+      [
+        2,
+        3,
+        4
+      ]
+    ],
+    "lower": 13589544960000,
+    "status": "certified",
+    "proof": "incidence-tree messages, conditioning on a cycle number where needed, packed replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1,
+        4
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "lower": 9521405624320,
+    "status": "certified",
+    "proof": "incidence-tree messages, conditioning on a cycle number where needed, packed replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1,
+        4
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        3,
+        4
+      ]
+    ],
+    "lower": 11374952448000,
+    "status": "certified",
+    "proof": "incidence-tree messages, conditioning on a cycle number where needed, packed replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1,
+        4
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "lower": 8772202266624,
+    "status": "certified",
+    "proof": "incidence-tree messages, conditioning on a cycle number where needed, packed replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        1,
+        4
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "lower": 8685229178880,
+    "status": "certified",
+    "proof": "incidence-tree messages, conditioning on a cycle number where needed, packed replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "lower": 7779259514880,
+    "status": "certified",
+    "proof": "incidence-tree messages, conditioning on a cycle number where needed, packed replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2,
+        4
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "lower": 7291243855872,
+    "status": "certified",
+    "proof": "incidence-tree messages, conditioning on a cycle number where needed, packed replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        2,
+        4
+      ],
+      [
+        1,
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "lower": 10243497000960,
+    "status": "certified",
+    "proof": "incidence-tree messages, conditioning on a cycle number where needed, packed replay"
+  },
+  {
+    "shape": [
+      [
+        0,
+        4
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "lower": 5571109453824,
+    "status": "certified",
+    "proof": "incidence-tree messages, conditioning on a cycle number where needed, packed replay"
+  }
+]

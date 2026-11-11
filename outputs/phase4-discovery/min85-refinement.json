@@ -1,0 +1,27 @@
+{
+  "shape": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      4
+    ],
+    [
+      1,
+      4
+    ],
+    [
+      2,
+      4
+    ],
+    [
+      3,
+      4
+    ]
+  ],
+  "lower": 7745436647424,
+  "combined_marked_totals": 38,
+  "independently_replayed": true
+}

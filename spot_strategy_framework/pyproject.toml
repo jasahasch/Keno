@@ -1,0 +1,12 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+[project]
+name = "scenario1-spot-strategy"
+version = "0.1.0"
+requires-python = ">=3.10"
+description = "Exact, independently verified Keno strategy research"
+[project.scripts]
+spot-strategy = "spot_strategy.cli:main"
+[tool.setuptools.package-data]
+spot_strategy = ["native/*.cpp"]
