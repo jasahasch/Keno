@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "census": 725,
+  "before": {
+    "certified-no-improvement": 575,
+    "open-resource-limit": 150
+  },
+  "after": {
+    "certified-no-improvement": 576,
+    "open-resource-limit": 149
+  },
+  "attempted": 150,
+  "unattempted": 0,
+  "separate_replays": 1,
+  "all_new_exclusions_separately_replayed": true,
+  "independent_geometry_generators_agree": true,
+  "preserved_files": 137,
+  "elapsed_seconds": 27.832428498999434
+}

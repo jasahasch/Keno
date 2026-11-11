@@ -1,0 +1,89 @@
+{
+  "reproduction": {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "stage": "finished",
+    "status": "certified-no-improvement",
+    "ordinary": [
+      8237478838272,
+      45
+    ],
+    "packed": [
+      8237478838272,
+      45
+    ],
+    "elapsed_seconds": 4.923968671000694,
+    "baseline_status": "open-resource-limit",
+    "previous_stopping_stage": "packed-replay",
+    "budget_seconds": 30,
+    "method": "full-component-profile-envelope"
+  },
+  "replay": {
+    "shape": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "stage": "finished",
+    "status": "candidate-exclusion",
+    "ordinary": [
+      8237478838272,
+      45
+    ],
+    "packed": [
+      8237478838272,
+      45
+    ],
+    "elapsed_seconds": 4.922849868999037
+  },
+  "expected": [
+    8237478838272,
+    45
+  ],
+  "matches_expected": true
+}

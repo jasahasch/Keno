@@ -1,0 +1,82 @@
+{
+  "docs/incidence86-issue14-evidence/geometry-validation.json": {
+    "sha256": "a97628b7fe54a45acda9063219eb7a7f84f597280e7327c7d1a973298d323864",
+    "bytes": 73
+  },
+  "docs/incidence86-issue14-evidence/attempts.txt": {
+    "sha256": "1cd720c85ad46a0b5a95d20a6624e94793da8aa24cf93e14be7d9e29084ea3fb",
+    "bytes": 48770
+  },
+  "docs/incidence86-issue14-evidence/ledger.json": {
+    "sha256": "6fb8f7014a478a096ba057b01a8ab7d6bb6a639fc320daff64b29234eabc577d",
+    "bytes": 93159
+  },
+  "docs/incidence86-issue14-evidence/attempts.json": {
+    "sha256": "c158fc9780559cafd8b5e798a37e39b2e07bd8a612995d63f36d7080cf7bc8ca",
+    "bytes": 79230
+  },
+  "docs/incidence86-issue14-evidence/preservation-baseline.json": {
+    "sha256": "d9c3816cd9ba737b45ed6909de668d5a40762dbed723338378e8f49ce9e02dee",
+    "bytes": 15628
+  },
+  "docs/incidence86-issue14-evidence/reconciliation.json": {
+    "sha256": "d65d0afe3356e91e94c36a757327a5753366555678dd466a533eb5b0243dad0d",
+    "bytes": 1460
+  },
+  "docs/incidence86-issue14-evidence/syntax-check.json": {
+    "sha256": "74f626ef6decab294a50ac7161e82f2de54f66fa324fc4983d4142c9fffe2ba2",
+    "bytes": 166
+  },
+  "docs/incidence86-issue14-evidence/record-a.json": {
+    "sha256": "c017e058df8e41c7c54e81e4b8ad87d506c02bbb56101bed241ea48c394aa6e3",
+    "bytes": 744
+  },
+  "docs/incidence86-issue14-evidence/keys.json": {
+    "sha256": "76a048af4f5713062706958f2208c2b075d3b403fbcee1807d083de6eb6050db",
+    "bytes": 62428
+  },
+  "docs/incidence86-issue14-evidence/priority-result.json": {
+    "sha256": "3a4921f1ce4ff46a9b9131e62ccdfe7877bc81601356ef0d0e46578d53c24f7e",
+    "bytes": 1216
+  },
+  "docs/incidence86-issue14-evidence/preservation.json": {
+    "sha256": "b6b440e029075ef0aa11e47b75f803b886bf7ea4330431d63b2157bd73e756a0",
+    "bytes": 124
+  },
+  "docs/incidence86-issue14-evidence/method.md": {
+    "sha256": "c0252e127630ffec9087267ec1d9dd191d8310ad729ffc8892023ac97a773b4a",
+    "bytes": 1899
+  },
+  "docs/incidence86-issue14-evidence/report.md": {
+    "sha256": "ac6ebc9f7b43f22c35c8ff6ca4153f1d1bea761f0aae97dc7dc927c6a729bf1d",
+    "bytes": 5519
+  },
+  "docs/incidence86-issue14-evidence/run-timing.json": {
+    "sha256": "a0a433d0dae8de2bc52c4cf414b5c9d8fb938426a7f4f0d05a657ce4c7b2b5b4",
+    "bytes": 383
+  },
+  "docs/incidence86-issue14-evidence/audit.json": {
+    "sha256": "640d79039983955344f7b8c7778637768855c6b5643de70713476bfaee7168ef",
+    "bytes": 446
+  },
+  "docs/incidence86-issue14-evidence/replay-audit.json": {
+    "sha256": "719d1c77730ca30706ff5160acb2082acb2236f3bb9dd08aaa000e937d3918e1",
+    "bytes": 472
+  },
+  "docs/incidence86-issue14-evidence/core-tests.txt": {
+    "sha256": "ace78c1597863213d935194c01e8259683d0ef5f4f63790f718f45f13d45d614",
+    "bytes": 115
+  },
+  "docs/incidence86-issue14-evidence/smoke.json": {
+    "sha256": "732d9b14aaa30996b51ec7aca30d5da98f8242d608539c5e58c2e1f5bff8d034",
+    "bytes": 181
+  },
+  "tools/incidence86_issue14.py": {
+    "sha256": "b002386b1f6bb0a8aba6d8cded903136c5123ae2a5c4534ee05e819fba382893",
+    "bytes": 6391
+  },
+  "tools/check_incidence86_issue14.py": {
+    "sha256": "b0675e8a5d524b335c8b43263af44ed55005cfa6e7396f4659c7ac5eefde917f",
+    "bytes": 4151
+  }
+}

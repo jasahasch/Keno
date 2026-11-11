@@ -1,0 +1,9 @@
+{
+  "first_observed_utc": "2026-11-11T20:56:04+00:00",
+  "evidence_finalized_utc": "2026-11-11T21:02:44.201602+00:00",
+  "observed_elapsed_seconds": 400.201602,
+  "outer_cap_seconds": 900,
+  "outer_launch_timestamp": "not exposed; supervisor enforces from launch",
+  "audit_reserve_used_for_search": false,
+  "host_persistence_check": "pending supervisor after isolated execution"
+}

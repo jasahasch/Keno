@@ -1,0 +1,4937 @@
+{
+  "source_commit_attested": "6dc6ac5a7d60db0aa9948f1b3cc99b03d66052c0",
+  "supervisor_attestation": {
+    "hostname": "SynFart",
+    "issue": 14,
+    "digest": "c7547512fbfb7e4f41faf326c6a9881bad0b17a3a8d1b81ba6a624ac2615f9f2",
+    "approval_comment": 6806837001,
+    "mode": "codex"
+  },
+  "source_hashes": {
+    "docs/incidence86-coverage.json": "cab25cc2cf66a0b9b11b4592a28665ba8d4015e9dde46cd0c15b854ca4dab15b",
+    "docs/incidence86-continuation.json": "6544c9220b10e3c4315d7f201b1b18882125ab020840f251d3135c6d83661215",
+    "docs/incidence86-priority.json": "07e84bccf4ac12772ad455c5512c105e8f43ab92226d437c17762f12110c7efc",
+    "docs/incidence86-post-pr9-evidence/ledger.json": "791464dc3074419951fd843cda4294555c7d79ae20462d9ec533fea1d33e7dd0",
+    "docs/incidence86-scenario1-evidence/ledger.json": "cf1aa15e595bd3c55e12d7ec652030b004d3fd83c2aa5bcc14a9164c9a59d70b"
+  },
+  "tool_hashes": {
+    "tools/incidence86.py": "ba4adcdcb96a159a18d5ebba1a7de229d6c006cdc81d96bb2f9b32f4b3484beb",
+    "tools/incidence86_grouped.py": "6cee24fe0c54367dfb2e53fdb5ef2d6640cfc1365c22d9336c471822b6ffcfb1",
+    "tools/replay_incidence86_strict.py": "7efdfbb3c619c37e3e2f5c3f4879d459202a7ea8358f46c4fcbc610f8256219a",
+    "tools/check_incidence86_post_pr9.py": "4e65fddce09fdd14ebafc38f40a5bf8b547d400c25c3bf693cf74312ed28a2d8",
+    "tools/validate_incidence86_attachments.py": "8b56c48c6fecf2e4720f23e649ed761b9c2ee456e95967a18ba69650801b33d1",
+    "tools/incidence86_retry.py": "a70f7de60c00940c41c160310c87798076f3a444899fcfe3fdc086fb10e60097",
+    "tools/test_incidence86_grouped.py": "fa32800b0ae3df23d50ff9f49db9712fe2be6b9182f3f7587ab19982944d0a42",
+    "tools/test_incidence86_grouped_strict.py": "81dca648332d393733886467b0c633997952ddf08ff3fb9efe4c5bcd2d3aad1e",
+    "tools/check_incidence86_scenario1.py": "cc5f2c22f54c08c66f4fee696cb7f6491c9507a13121e36f9b9685d039fa94fb",
+    "tools/incidence86_issue14.py": "b775b8273afed38351e1923b8dca49ce323a2df17ee7409f5c25fef9a584a866",
+    "tools/build_publication.py": "bbb0544ecdfbd173888a193392e626cb286091493f89a6f00713f83e5906d518",
+    "tools/incidence86_priority.py": "ada8b82b75cf8e95d63dfff3c5e17e24ff3daa9e24291aedb6d93742ab7f71dc",
+    "tools/check_phase4.py": "4ece227f03c4d1dcd84e1d5fa0aab0c97c7b17e763637d06f4722766c4220771",
+    "tools/check_incidence86_issue14.py": "c5d2c3f4d54e1ac0568e3a38da0e975c0dff29cf8cec48d7be1422a11da85064",
+    "tools/incidence86_run_strict.py": "0e9370030fc58721031795ffac8c769a7643406c3b5908aba9910f7865a8093c",
+    "tools/incidence86_grouped_strict.py": "f87ccd8e065bfad981146a4032d50f1c4582190602ee33f588aafaf284f50830",
+    "tools/finalize_incidence86_scenario1.py": "0af12858c4e3e6b8dba6f8c36319760b9f090b62650c2710a55c073c3b462e80",
+    "tools/incidence86_post_pr9.py": "935715e11c1bdb5c0e16392ceb7cc5d733ee009e87eafcd91119bad8a13232c0",
+    "tools/incidence86_scenario1.py": "12d873805c8f8c53236160841a12c099bbf7028674f82fe8ea71e37baaa3a70c",
+    "outputs/phase4-discovery/refine85.py": "286694d3e28e0cf71099b4265cad3074b34e03c61034b23c3245bc4549f66462",
+    "outputs/phase4-discovery/tree85.py": "5855174f2ee02f76106be638c2bf0eae95d16a9b9d3285d07562733f80cd5a08",
+    "outputs/phase4-discovery/bound85.py": "724add3dcd36a926fc47402f5580b3028ba1fadd729d5bf332782c79fd121c27",
+    "outputs/phase4-discovery/cycle85.py": "a93abecc4995ba95e9dc5fb6b1f0853b948daffc8d41221892035aef2dc0926c"
+  },
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "paytable_sha256": "d12c1a7588b93d8e2fff3061d4c89b8b3a7c9fd6d9b386460952f2b05fe8cbe1",
+  "before": {
+    "certified-no-improvement": 575,
+    "open-resource-limit": 150
+  },
+  "after": {
+    "certified-no-improvement": 576,
+    "open-resource-limit": 149
+  },
+  "attempts": [
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          4,
+          5
+        ]
+      ],
+      "stage": "finished",
+      "status": "certified-no-improvement",
+      "ordinary": [
+        8237478838272,
+        45
+      ],
+      "packed": [
+        8237478838272,
+        45
+      ],
+      "elapsed_seconds": 4.923968671000694,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "packed-replay",
+      "budget_seconds": 30,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5026729940000223,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5010615259998303,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5024014049995458,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5000559119998798,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5019611389998317,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5041336750000482,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5013743859999522,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5033596779994696,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          4
+        ],
+        [
+          2,
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.505772786000307,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5041068379996432,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5013379850006459,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5033044119991246,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5019895959994756,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5032626489992253,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5028087749997212,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.502057566998701,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5028259649989195,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5008230040002672,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5007378499994957,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5006790999996156,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5007599590007885,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5006033159988874,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5031373399997392,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5008559030011384,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5031045960004121,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5014583989996027,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5057146679992002,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5014321710004879,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          3,
+          4
+        ],
+        [
+          2,
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5030598299999838,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5011758979999286,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5007514559983974,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5032173140007217,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5006310170010693,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5014102029999776,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5010482819998288,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.502381650998359,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5012578919995576,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          2,
+          3,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5055363009996654,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5044790239990107,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          2,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5027475690003484,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          2,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5059018160009146,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5064819470007933,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          3,
+          4
+        ],
+        [
+          2,
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5148114950006857,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          4
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5023404610001307,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          4
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5033184559997608,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5029443170005834,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5013509950003936,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          4
+        ],
+        [
+          2,
+          3,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5057667669989314,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5014797840012761,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5013152210012777,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5008712759990885,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5024157080006262,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5026347900002293,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.501312443999268,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5008766329992795,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5018892569987656,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5026359240000602,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5042361139985587,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.501415407001332,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          3,
+          4
+        ],
+        [
+          2,
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5065874340016308,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5032550509986322,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2,
+          3
+        ],
+        [
+          1,
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5029421460003505,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2,
+          4
+        ],
+        [
+          1,
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.506489736999356,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5012443249997887,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5052068040004087,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5018719270010479,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.504972242999429,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          3,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5037252160000207,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5027420059996075,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5008265510005003,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.501367234001009,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.501931094999236,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5014110000010987,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5014472469993052,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5006070070012356,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          2,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5008668620012031,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5009508399998595,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3,
+          4
+        ],
+        [
+          2,
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5057705039998837,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5016495950003446,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2,
+          3,
+          4
+        ],
+        [
+          2,
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5103530600008526,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2,
+          3,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.503528658000505,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.504507810999712,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2,
+          4
+        ],
+        [
+          2,
+          3,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5068441120001808,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5011236689988436,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.500989901000139,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5013722339990636,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.503429338999922,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          3,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.505966996999632,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          3,
+          4
+        ],
+        [
+          2,
+          3,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.502376987000389,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5027586369997152,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.503341884999827,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5012779209992004,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5005189670009713,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3,
+          4
+        ],
+        [
+          2,
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5024405070016655,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5010169110009883,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3,
+          4
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5044644110002992,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5017812000005506,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.501134969999839,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5028699839986075,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          1,
+          3,
+          4
+        ],
+        [
+          2,
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5053487820005103,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1,
+          2,
+          3
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5017437440001231,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1,
+          2,
+          3
+        ],
+        [
+          1,
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5043234639997536,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1,
+          2,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5023416620006174,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1,
+          2,
+          3
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5029545950001193,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1,
+          2,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.504184366998743,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5001157309998234,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5066797620002035,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1,
+          2,
+          4
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.501885810001113,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1,
+          2,
+          4
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5094315980004467,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1,
+          2,
+          4
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5016699739990145,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1,
+          2,
+          4
+        ],
+        [
+          1,
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5109978749987931,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1,
+          2,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5040672790000826,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1,
+          2,
+          4
+        ],
+        [
+          2,
+          3,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5094116399995983,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1,
+          2,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5062929850009823,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1,
+          2,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5041674220010464,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1,
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.504576626999551,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1,
+          3
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5030448269990302,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.502950651998617,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5062921340013418,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1,
+          3,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5044858659985039,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1,
+          3,
+          4
+        ],
+        [
+          2,
+          3,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5047057970004971,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1,
+          4
+        ],
+        [
+          0,
+          1,
+          4
+        ],
+        [
+          2,
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5052363499999046,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1,
+          4
+        ],
+        [
+          0,
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5029620269997395,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1,
+          4
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5057892539989552,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1,
+          4
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5012829440001951,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1,
+          4
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5012683580007433,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1,
+          4
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5043760889984696,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1,
+          4
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5012131260009483,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1,
+          4
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.503521409998939,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1,
+          4
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5010527310005273,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1,
+          4
+        ],
+        [
+          1,
+          2,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5028899129993079,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1,
+          4
+        ],
+        [
+          1,
+          3,
+          4
+        ],
+        [
+          2,
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.509026179999637,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5025370380008098,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5049143209998874,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5047795079990465,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5013959799998702,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5012024579991703,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5010830449991772,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5030838069997117,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5012039510002069,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5035329740003363,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          2,
+          4
+        ],
+        [
+          1,
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5027756279996538,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2,
+          4
+        ],
+        [
+          1,
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5024308989995916,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5010264550001011,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          2,
+          3
+        ],
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5057147500010615,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          2,
+          4
+        ],
+        [
+          1,
+          2,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5043580709989328,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          2,
+          4
+        ],
+        [
+          1,
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5021924550001131,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5008643270011817,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    },
+    {
+      "shape": [
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "stage": "ordinary",
+      "status": "open-resource-limit",
+      "timeout_stage": "ordinary",
+      "elapsed_seconds": 1.5021156409984542,
+      "baseline_status": "open-resource-limit",
+      "previous_stopping_stage": "ordinary",
+      "budget_seconds": 1.5,
+      "method": "full-component-profile-envelope"
+    }
+  ],
+  "budgets": {
+    "outer": 900,
+    "initial_computation_cap": 600,
+    "local_pass_cap": 480,
+    "priority": 30,
+    "secondary": 1.5,
+    "secondary_replay": 10
+  },
+  "elapsed_seconds": 253.05386554599863,
+  "review_tool_hashes": {
+    "tools/incidence86_issue14.py": "b002386b1f6bb0a8aba6d8cded903136c5123ae2a5c4534ee05e819fba382893",
+    "tools/check_incidence86_issue14.py": "b0675e8a5d524b335c8b43263af44ed55005cfa6e7396f4659c7ac5eefde917f"
+  }
+}
