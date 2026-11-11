@@ -199,6 +199,18 @@ class BridgeTests(unittest.TestCase):
         self.assertEqual(before, self.private.read_bytes())
         self.assertEqual(self.rawgit('status', '--porcelain', cwd=self.repo), '')
 
+    def test_smoke_rejects_executable_bit_only_change(self):
+        def chmod(args, *unused, **kwargs):
+            if '/runner/relay.py' in args:
+                (self.work() / 'docs/test.md').chmod(0o755)
+            self.assertNotIn('/runner/smoke.py', args)
+            return 0
+
+        with self.execution(chmod):
+            result = self.run_fixture(smoke=True)
+        self.assertEqual(result['local_reason'], 'Smoke changed source files')
+        self.assertNotIn('smoke_verified', result)
+
     def test_smoke_requires_structured_result_even_on_zero_exit(self):
         def skip_checks(args, log, timeout, **kwargs):
             if '/runner/smoke.py' in args:
@@ -328,6 +340,40 @@ class BridgeTests(unittest.TestCase):
                          'docs/new.md')
         self.assertFalse(any('merge' in args or '--force' in args or 'reset' in args for args in calls))
         self.assertEqual(self.private.read_bytes(), b'private sentinel')
+
+    def test_publish_rejects_mode_changed_after_review_or_during_staging(self):
+        def chmod(args, *unused, **kwargs):
+            if '/runner/relay.py' in args:
+                file = self.work() / 'docs/test.md'
+                file.write_text('reviewed change\n')
+                file.chmod(0o755)
+            return 0
+
+        with self.execution(chmod):
+            result = self.run_fixture()
+        self.assertEqual(result['changes'], ['docs/test.md'])
+        key, review = result['key'], result['review_sha256']
+        file = self.work() / 'docs/test.md'
+        file.chmod(0o644)
+        with self.assertRaisesRegex(b.Blocked, 'Review digest mismatch'):
+            b.publish(self.state, self.gh, key, review)
+        file.chmod(0o755)
+
+        original = b.git
+
+        def git(*args, **kwargs):
+            output = original(*args, **kwargs)
+            if 'add' in args:
+                original('update-index', '--chmod=-x', '--', 'docs/test.md', cwd=self.work())
+            return output
+
+        with patch.object(b, 'git', side_effect=git):
+            with self.assertRaisesRegex(b.Blocked, 'Staged mode or content'):
+                b.publish(self.state, self.gh, key, review)
+        with b.ledger(self.state) as db:
+            self.assertEqual(db.execute('SELECT status FROM runs WHERE key=?', (key,)).fetchone()[0],
+                             'awaiting-source-review')
+        self.assertFalse(self.gh.prs)
 
     def test_staging_failure_keeps_run_awaiting_review(self):
         (self.repo / '.gitignore').write_text('*\n!/docs/\n!/docs/test.md\n')
@@ -474,7 +520,11 @@ class BridgeTests(unittest.TestCase):
 
     def legacy_failure(self):
         with self.execution(), patch.object(b, 'sandbox', side_effect=FileNotFoundError(2, 'No such file or directory', '/usr/bin/codex')):
-            return self.run_fixture(smoke=True)
+            report = self.run_fixture(smoke=True)
+        baseline = self.state / report['key'] / 'baseline.json'
+        entries = json.loads(baseline.read_text())
+        baseline.write_text(json.dumps({path: entry['sha256'] for path, entry in entries.items()}))
+        return report
 
     def test_exact_preflight_recovery_preserves_original_and_remains_single_use(self):
         old = self.legacy_failure()
@@ -500,7 +550,7 @@ class BridgeTests(unittest.TestCase):
 
     def test_modified_original_worktree_prevents_preflight_recovery(self):
         old = self.legacy_failure()
-        (self.work() / 'docs/test.md').write_text('preserve this edit')
+        (self.work() / 'docs/test.md').chmod(0o755)
         with self.execution(), self.assertRaises(b.Blocked):
             b.execute(self.state, self.gh, 9, b.digest(self.gh.issue), Path('/bin/true'), 1,
                       recovery_key=old['key'])

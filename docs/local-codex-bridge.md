@@ -62,7 +62,7 @@ Unattended polling is not implemented. There is no cron, systemd timer, issue we
 
 ## Reports, source review and PRs
 
-Each run retains a private `report.json`, assignment snapshot, baseline content hashes, worktree and bounded local logs. A SQLite primary key and exclusive process lock prevent duplicate/concurrent execution in the chosen state directory. Kernel locks release on crashes; an unfinished ledger entry still blocks execution. Timeouts kill the process group; the agent's private PID namespace constrains descendants. Codex output is limited by a 16 MiB file-size limit. Never treat an exit-zero agent response as a mathematical proof: examine the actual logs, tests and deterministic smoke result.
+Each run retains a private `report.json`, assignment snapshot, baseline file modes and content hashes, worktree and bounded local logs. A SQLite primary key and exclusive process lock prevent duplicate/concurrent execution in the chosen state directory. Kernel locks release on crashes; an unfinished ledger entry still blocks execution. Timeouts kill the process group; the agent's private PID namespace constrains descendants. Codex output is limited by a 16 MiB file-size limit. Never treat an exit-zero agent response as a mathematical proof: examine the actual logs, tests and deterministic smoke result.
 
 The trusted orchestrator automatically posts only fixed-format status metadata to the originating issue. Raw logs, model-authored summaries, assignment text, local paths, source diffs and secrets are not automatically posted. API failures leave a durable report. Retry reporting only, without rerunning execution:
 
@@ -72,13 +72,13 @@ python3 -m tools.keno_bridge.bridge report --run RUN_KEY
 
 A private per-state instance ID distinguishes reports from different machines. A marker prevents duplicate result comments after a crash between remote acceptance and local acknowledgement. Reporting requires access to the original still-open issue. If it is closed, preserve the local report and handle the communication manually.
 
-For source changes, inspect the private worktree diff, every new file, test output and `report.json`. The trusted publisher compares literal file hashes rather than accepting an agent-controlled Git index. The report contains a `review_sha256` binding the exact changed contents and deletions. Once reviewed, explicitly publish that revision:
+For source changes, inspect the private worktree diff, every new file, test output and `report.json`. The trusted publisher compares literal file hashes rather than accepting an agent-controlled Git index. The report contains a `review_sha256` binding the exact changed contents, Git file modes and deletions. Once reviewed, explicitly publish that revision:
 
 ```bash
 python3 -m tools.keno_bridge.bridge publish --run RUN_KEY --review REVIEW_SHA256
 ```
 
-Only this separate command stages the approved source paths, commits, pushes a new branch without force, and creates a draft PR. It checks that the issue and implementation approval remain current. It explicitly stages only the reviewed paths, including new files ignored by default, and verifies the staged paths and bytes before reserving publication. The source archive still follows `publication-files.txt`. It posts the PR URL to the issue. It never merges, closes the issue, rewrites the permanent workspace or pushes to `main`. If publication is interrupted, the ledger remains `publishing`: inspect GitHub and the retained branch manually; never rerun Codex to repair a publishing failure.
+Only this separate command stages the approved source paths, commits, pushes a new branch without force, and creates a draft PR. It checks that the issue and implementation approval remain current. It explicitly stages only the reviewed paths, including new files ignored by default, and verifies the staged paths, modes and bytes before reserving publication. The source archive still follows `publication-files.txt`. It posts the PR URL to the issue. It never merges, closes the issue, rewrites the permanent workspace or pushes to `main`. If publication is interrupted, the ledger remains `publishing`: inspect GitHub and the retained branch manually; never rerun Codex to repair a publishing failure.
 
 Review source with `git -C WORKTREE diff` and open each listed untracked file. No arbitrary shell command is constructed from issue text. The publisher disables Git hooks/fsmonitor, uses a new source clone and gives the agent no GitHub credentials. Publication on SynFart requires a working host `gh` account with write access. Installation of the bridge alone does not prove an issue triggered Codex.
 

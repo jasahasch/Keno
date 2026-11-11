@@ -242,7 +242,17 @@ def recover_preflight(db, state, key, issue, sha):
     if any((folder / name).exists() for name in ('codex.log', 'sandbox-probe.log', 'preflight-recovery')):
         raise Blocked('Execution evidence exists or recovery was attempted; refusing another execution')
     baseline = json.loads((folder / 'baseline.json').read_text())
-    changes, _ = collect_changes(folder / 'worktree', baseline)
+    work = folder / 'worktree'
+    if any(isinstance(entry, str) for entry in baseline.values()):
+        # Original preflight reports stored only hashes. Recover modes from the recorded commit.
+        modes = {}
+        for row in filter(None, git('ls-tree', '-r', '-z', old['base'], cwd=work).split('\0')):
+            meta, path = row.split('\t', 1)
+            modes[path] = meta.split()[0]
+        if baseline.keys() != modes.keys() or any(mode not in ('100644', '100755') for mode in modes.values()):
+            raise Blocked('Original baseline does not match the recorded source tree')
+        baseline = {path: {'mode': modes[path], 'sha256': sha256} for path, sha256 in baseline.items()}
+    changes, _ = collect_changes(work, baseline)
     if changes:
         raise Blocked('Original worktree changed; preserve and inspect it manually')
     return old
@@ -291,11 +301,12 @@ def source_inventory(work):
     result = {}
     for row in filter(None, rows):
         meta, path = row.split('\t', 1)
-        if meta.split()[0] not in ('100644', '100755'):
+        mode = meta.split()[0]
+        if mode not in ('100644', '100755'):
             raise Blocked('Symlinks and submodules are not permitted in the public source checkout')
         if not safe_input(path):
             raise Blocked('Private-looking path in public source; refusing execution')
-        result[path] = hashlib.sha256((work / path).read_bytes()).hexdigest()
+        result[path] = {'mode': mode, 'sha256': hashlib.sha256((work / path).read_bytes()).hexdigest()}
     return result
 
 
@@ -304,6 +315,10 @@ def safe_input(path):
     lower = path.lower()
     return (bool(SAFE_PATH.fullmatch(path)) and not p.is_absolute() and '..' not in p.parts
             and not any(x in lower for x in ('.sqlite', '.db', '.bak', '.backup', '.env', 'auth.json', 'credentials')))
+
+
+def git_file_mode(file):
+    return '100755' if file.stat().st_mode & stat.S_IXUSR else '100644'
 
 
 def collect_changes(work, baseline):
@@ -316,7 +331,8 @@ def collect_changes(work, baseline):
         if file.is_symlink() or (not file.is_file() and not file.is_dir()):
             raise Blocked('Symlink or special file produced; publication blocked')
         if file.is_file():
-            current[relative] = hashlib.sha256(file.read_bytes()).hexdigest()
+            current[relative] = {'mode': git_file_mode(file),
+                                 'sha256': hashlib.sha256(file.read_bytes()).hexdigest()}
     changes = sorted(p for p in baseline.keys() | current.keys() if baseline.get(p) != current.get(p))
     for path in changes:
         p = Path(path)
@@ -468,6 +484,8 @@ def publish(state, gh, key, review):
         folder = run_folder(state, report)
         work = folder / 'worktree'
         baseline = json.loads((folder / 'baseline.json').read_text())
+        if any(isinstance(entry, str) for entry in baseline.values()):
+            raise Blocked('This run predates mode-aware source review; its digest cannot authorize publication')
         changes, revision = collect_changes(work, baseline)
         if review != revision or revision != report['review_sha256']:
             raise Blocked('Review digest mismatch; source changed since execution')
@@ -484,9 +502,11 @@ def publish(state, gh, key, review):
             raise Blocked('Staged paths do not match the reviewed changes')
         for path in changes:
             if (work / path).is_file():
+                file = work / path
                 blob = git('hash-object', '--no-filters', '--', path, cwd=work).strip()
-                if git('rev-parse', ':' + path, cwd=work).strip() != blob:
-                    raise Blocked('Staged content does not match the reviewed file')
+                entry = git('--literal-pathspecs', 'ls-files', '--stage', '-z', '--', path, cwd=work)
+                if entry != f'{git_file_mode(file)} {blob} 0\t{path}\0':
+                    raise Blocked('Staged mode or content does not match the reviewed file')
         if collect_changes(work, baseline) != (changes, revision):
             raise Blocked('Reviewed files changed during staging')
         git('diff', '--cached', '--check', cwd=work)
