@@ -1,4 +1,4 @@
-"""Post-PR9 secondary continuation of the merged 86-incidence ledgers; stdout is a new ledger.
+"""Post-PR9 secondary continuation of the merged 86-incidence ledgers with durable worktree evidence.
 
 No historical files or databases are written. Run with assertions enabled.
 """
@@ -6,6 +6,7 @@ import argparse
 from collections import Counter
 from hashlib import sha256
 import json
+import os
 from pathlib import Path
 import signal
 import time
@@ -21,16 +22,36 @@ def priority(row):
     return (row['largest_component'], max(row['component_cycle_ranks']), key(row))
 
 
+def write_evidence(path, text):
+    temporary = path.with_suffix('.tmp')
+    with temporary.open('w', encoding='utf-8') as stream:
+        stream.write(text)
+        stream.flush()
+        os.fsync(stream.fileno())
+    temporary.replace(path)
+
+
 def main():
     if not __debug__:
         raise SystemExit('Assertions must be enabled')
     parser = argparse.ArgumentParser(__doc__)
     parser.add_argument('--seconds', type=float, default=600)
-    parser.add_argument('--retry-seconds', type=float, default=3)
     parser.add_argument('--unvisited-seconds', type=float, default=3)
+    parser.add_argument('--output-dir', type=Path, required=True,
+                        help='new evidence directory directly under the worktree docs directory')
     args = parser.parse_args()
-    if not 0 < args.seconds <= 840 or min(args.retry_seconds, args.unvisited_seconds) <= 0:
+    if not 0 < args.seconds <= 840 or not 0 < args.unvisited_seconds <= args.seconds:
         parser.error('positive budgets required; total must be at most 840 seconds')
+    docs = base.ROOT / 'docs'
+    output = args.output_dir.absolute()
+    if output.parent.resolve() != docs.resolve() or output.name.startswith('.'):
+        parser.error('--output-dir must be a new directory directly under docs/')
+    try:
+        output.mkdir(mode=0o700)
+    except FileExistsError:
+        parser.error('--output-dir already exists; preserve it and select a new directory')
+    journal = output / 'attempts.txt'
+    journal.touch(exist_ok=False)
     started = time.monotonic()
     deadline = started + args.seconds
     path = base.ROOT / 'docs/incidence86-coverage.json'
@@ -89,16 +110,14 @@ def main():
                       and key(r) not in excluded),
                      key=lambda r: (recent[key(r)]['stage'] != 'packed-replay', priority(r)))
     assert len(targets) == 215
-    priority_keys = set()
     for row in targets:
         remaining = deadline - time.monotonic()
         if remaining <= 0:
             break
         shape = key(row)
-        allotted = min(remaining, args.retry_seconds if shape in priority_keys
-                       else args.unvisited_seconds)
+        allotted = min(remaining, args.unvisited_seconds)
         messages = max(row['component_cycle_ranks']) <= 1
-        attempt = dict(shape=shape, priority_group=1 if shape in priority_keys else 2,
+        attempt = dict(shape=shape, priority_group=2,
                        previous_stopping_stage=recent[shape]['stage'], baseline_status=row['status'], budget_seconds=allotted,
                        method='conditional-tree-cycle' if messages else 'full-component-profiles',
                        replay='packed-integer', stage='initial', status='open-resource-limit')
@@ -117,8 +136,10 @@ def main():
         attempt['elapsed_seconds'] = time.monotonic() - tick
         attempts.append(attempt)
         updated[shape] = dict(row, status=attempt['status'], continuation_attempt=len(attempts))
-        print(json.dumps(dict(attempt=len(attempts), **attempt)), file=base.sys.stderr, flush=True)
-        # Scratch JSONL is flushed after every validated attempt, including deferrals.
+        with journal.open('a', encoding='utf-8') as stream:
+            stream.write(json.dumps(dict(attempt=len(attempts), **attempt)) + '\n')
+            stream.flush()
+            os.fsync(stream.fileno())
 
     after = Counter(r['status'] for r in updated.values())
     assert all(updated[key(r)] == r for r in rows if r['status'] == 'certified-no-improvement')
@@ -129,13 +150,39 @@ def main():
                   priority_count=0, source_commit='unavailable: masked Git metadata',
                   host_identity='not independently attested', baseline_sha256=sha256(raw).hexdigest(),
                   paytable_sha256=table_hash, census_keys=725, enumeration_agreement=True,
-                  configuration=vars(args), elapsed_seconds=time.monotonic()-started,
+                  configuration=dict(seconds=args.seconds, unvisited_seconds=args.unvisited_seconds), elapsed_seconds=time.monotonic()-started,
                   throughput_attempts_per_second=len(attempts)/(time.monotonic()-started),
                   before=dict(Counter(r['status'] for r in rows)), after=dict(after),
                   accepted_baseline_preserved=503, attempts=attempts,
                   unattempted=[dict(shape=key(r), baseline_status=r['status']) for r in targets
                                if key(r) not in {tuple(map(tuple, a['shape'])) for a in attempts}])
-    print(json.dumps(report, indent=2))
+    keys = {
+        'attempted': [key(a) for a in attempts],
+        'newly_certified': [key(a) for a in attempts if a['status'] == 'certified-no-improvement'],
+        'still_open': sorted(k for k, row in updated.items() if row['status'].startswith('open-')),
+        'deferred_priority': report['deferred_priority_keys'],
+        'unattempted': [key(row) for row in report['unattempted']],
+    }
+    write_evidence(output / 'ledger.json', json.dumps(report, indent=2) + '\n')
+    write_evidence(output / 'keys.json', json.dumps(keys, indent=2) + '\n')
+    minimum = min((a['lower'] for a in attempts if a['status'] == 'certified-no-improvement'), default=None)
+    write_evidence(output / 'report.md', f'''# Post-PR #9 incidence-86 pass
+
+Baseline: 503 certified exclusions and 222 open geometries.
+
+- Attempted: {len(keys['attempted'])}
+- New exclusions with matching ordinary and packed replay: {len(keys['newly_certified'])}
+- Open: {len(keys['still_open'])}
+- Deferred priority keys: {len(keys['deferred_priority'])}
+- Other unattempted keys: {len(keys['unattempted'])}
+- Minimum new floor: {minimum if minimum is not None else 'none'}
+- Elapsed seconds: {report['elapsed_seconds']:.3f}
+- Throughput: {report['throughput_attempts_per_second']:.3f} attempts per second
+
+See [ledger](ledger.json), [attempt journal](attempts.txt), and [key lists](keys.json).
+The retained evidence still needs independent review. Unrestricted optimality remains open.
+''')
+    print(f'Saved ledger, journal, key lists, and report in {output}')
 
 
 if __name__ == '__main__':

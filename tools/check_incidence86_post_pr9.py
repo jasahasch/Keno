@@ -1,6 +1,6 @@
-"""Audit a scratch post-PR9 ledger and its flushed attempt journal, read-only.
+"""Audit a retained post-PR9 ledger, attempt journal, and key lists, read-only.
 
-Usage: python3 tools/check_incidence86_post_pr9.py LEDGER JOURNAL
+Usage: python3 tools/check_incidence86_post_pr9.py EVIDENCE_DIR
 The optional --replay recomputes every accepted bound in both representations.
 """
 import argparse
@@ -20,11 +20,10 @@ def main():
     if not __debug__:
         raise SystemExit('Assertions must be enabled')
     parser = argparse.ArgumentParser(__doc__)
-    parser.add_argument('ledger', type=Path)
-    parser.add_argument('journal', type=Path)
+    parser.add_argument('evidence_dir', type=Path)
     parser.add_argument('--replay', action='store_true')
     args = parser.parse_args()
-    report = json.loads(args.ledger.read_text())
+    report = json.loads((args.evidence_dir / 'ledger.json').read_text())
     paths = ['incidence86-coverage.json', 'incidence86-continuation.json',
              'incidence86-priority.json']
     data = []
@@ -48,7 +47,7 @@ def main():
     assert Counter(r['status'] for r in live.values()) == report['before'] == {
         'certified-no-improvement': 503, 'open-resource-limit': 222}
     old = dict(live)
-    journal = [json.loads(line) for line in args.journal.read_text().splitlines()]
+    journal = [json.loads(line) for line in (args.evidence_dir / 'attempts.txt').read_text().splitlines()]
     assert journal == [dict(attempt=i, **a) for i, a in enumerate(report['attempts'], 1)]
     seen = set()
     excluded = {key(a) for a in data[2]['attempts'] if a['priority_group'] == 1}
@@ -81,6 +80,16 @@ def main():
     assert {tuple(map(tuple, k)) for k in report['deferred_priority_keys']} == remaining & excluded
     assert {key(r) for r in report['unattempted']} == {
         k for k, r in old.items() if r['status'].startswith('open-') and k not in excluded and k not in seen}
+    keys = json.loads((args.evidence_dir / 'keys.json').read_text())
+    def keys_for(name):
+        return [tuple(map(tuple, shape)) for shape in keys[name]]
+    assert keys_for('attempted') == [key(a) for a in report['attempts']]
+    assert keys_for('newly_certified') == [
+        key(a) for a in report['attempts'] if a['status'] == 'certified-no-improvement']
+    assert keys_for('still_open') == sorted(remaining)
+    assert keys_for('deferred_priority') == [tuple(map(tuple, k)) for k in report['deferred_priority_keys']]
+    assert keys_for('unattempted') == [key(r) for r in report['unattempted']]
+    assert (args.evidence_dir / 'report.md').stat().st_size > 0
     print(json.dumps(dict(before=report['before'], after=report['after'], attempts=len(seen),
                           replayed=replayed, newly_certified=[k for k in seen if live[k]['status']=='certified-no-improvement'],
                           still_open=sorted(remaining), histories=[dict(shape=k, history=histories[k]) for k in sorted(remaining)]), indent=2))
