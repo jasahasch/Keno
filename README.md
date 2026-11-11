@@ -19,3 +19,5 @@ python3 -m unittest -v multi_keno.test_platform unrestricted_resolution.test_res
 ```
 
 [Multi-game guide](multi_keno/README.md) covers an isolated fixture database, adding models, editing patterns and reevaluating under another paytable. [Mathematical specification](docs/mathematics.md) covers exact evaluation and Phase 4. [Workspace operations](docs/workspace.md) covers private research databases, the original worker, checkpoints, and restoration. [Publication checklist](docs/publication.md) describes the source release and its boundaries.
+
+[Supervised local Codex bridge](docs/local-codex-bridge.md) documents owner-approved GitHub assignments, isolated execution, source review and draft PR publication. It does not enable unattended polling.

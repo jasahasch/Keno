@@ -1,5 +1,6 @@
 .gitignore
 README.md
+docs/local-codex-bridge.md
 docs/mathematics.md
 docs/publication.md
 docs/workspace.md
@@ -73,6 +74,12 @@ spot_strategy_framework/spot_strategy/ranking.py
 spot_strategy_framework/spot_strategy/workflow.py
 tools/build_publication.py
 tools/check_phase4.py
+tools/keno_bridge/__init__.py
+tools/keno_bridge/bridge.py
+tools/keno_bridge/gateway.py
+tools/keno_bridge/relay.py
+tools/keno_bridge/smoke.py
+tools/keno_bridge/test_bridge.py
 unrestricted_resolution/__init__.py
 unrestricted_resolution/incidence.py
 unrestricted_resolution/overlap.py
