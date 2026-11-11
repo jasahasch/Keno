@@ -1,0 +1,5 @@
+{
+  "checked": 137,
+  "unchanged": true,
+  "trusted_host_check": "required after isolation; unavailable inside namespace"
+}

@@ -1,0 +1,55 @@
+[
+  {
+    "source": "docs/incidence86-continuation.json",
+    "sha256": "6544c9220b10e3c4315d7f201b1b18882125ab020840f251d3135c6d83661215",
+    "before": {
+      "certified-no-improvement": 434,
+      "open-unvisited": 253,
+      "open-resource-limit": 38
+    },
+    "after": {
+      "certified-no-improvement": 497,
+      "open-resource-limit": 228
+    },
+    "attempts": 291
+  },
+  {
+    "source": "docs/incidence86-priority.json",
+    "sha256": "07e84bccf4ac12772ad455c5512c105e8f43ab92226d437c17762f12110c7efc",
+    "before": {
+      "certified-no-improvement": 497,
+      "open-resource-limit": 228
+    },
+    "after": {
+      "certified-no-improvement": 503,
+      "open-resource-limit": 222
+    },
+    "attempts": 228
+  },
+  {
+    "source": "docs/incidence86-post-pr9-evidence/ledger.json",
+    "sha256": "791464dc3074419951fd843cda4294555c7d79ae20462d9ec533fea1d33e7dd0",
+    "before": {
+      "certified-no-improvement": 503,
+      "open-resource-limit": 222
+    },
+    "after": {
+      "certified-no-improvement": 568,
+      "open-resource-limit": 157
+    },
+    "attempts": 215
+  },
+  {
+    "source": "docs/incidence86-scenario1-evidence/ledger.json",
+    "sha256": "cf1aa15e595bd3c55e12d7ec652030b004d3fd83c2aa5bcc14a9164c9a59d70b",
+    "before": {
+      "certified-no-improvement": 568,
+      "open-resource-limit": 157
+    },
+    "after": {
+      "certified-no-improvement": 575,
+      "open-resource-limit": 150
+    },
+    "attempts": 157
+  }
+]
