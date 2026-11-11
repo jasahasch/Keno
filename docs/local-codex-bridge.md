@@ -6,7 +6,7 @@ The latest owner directive governs this implementation. Read the root README, ap
 
 ## Requirements and trust boundary
 
-Linux, Python 3.10+, Git, GitHub CLI (`gh`), Bubblewrap (`bwrap`) with functioning unprivileged namespaces, and a Linux Codex CLI binary supporting `exec --ignore-user-config --ignore-rules --ephemeral` are required. Run as an ordinary user, never root. The implementation is standard-library Python.
+Linux, Python 3.10+, Git, GitHub CLI (`gh`), Bubblewrap (`bwrap`) with functioning unprivileged namespaces, and a Linux Codex CLI binary supporting `exec --ephemeral --skip-git-repo-check --sandbox` are required. Run as an ordinary user, never root. The implementation is standard-library Python.
 
 Authenticate the trusted host's GitHub CLI with the owner account and authenticate the host Codex CLI (`codex login`) or configure `OPENAI_API_KEY` locally through your normal credential manager. Do not put credentials into an issue, source file, command history, or this document. `gh auth status` must succeed. The gateway reads API-key or existing ChatGPT OAuth credentials on the trusted host; `auth.json` is never exposed to the agent. OAuth refresh is not automated: renew an expired login locally. API usage may incur charges.
 
@@ -47,7 +47,7 @@ Set `assignment_sha` to the digest printed by `inspect`. The exact smoke command
 python3 -m tools.keno_bridge.bridge run --issue 1 --approve "$assignment_sha" --smoke --timeout 300
 ```
 
-Use `--codex-bin /absolute/path/to/codex` if automatic lookup resolves to a wrapper rather than the real Linux ELF executable. The bridge refuses an unavailable or failing sandbox. It does not retry with weaker permissions. A completed smoke requires Codex to return successfully, the trusted deterministic Record A/core-regression/synthetic checker to pass, and no source-file changes. The checker uses a temporary SQLite database, independently replays all 595 layouts under each objective, and checks integrity and foreign keys.
+Codex CLI must be on PATH, or supply `--codex-bin /absolute/path/to/codex`. Standard npm launchers are resolved to their native Linux binary. Executable presence, required CLI flags and Bubblewrap availability are checked before an assignment is reserved. The isolated home and masked project `.codex` configuration enforce configuration isolation without relying on Cloud-only CLI flags. The bridge refuses an unavailable or failing sandbox. It does not retry with weaker permissions. A completed smoke requires Codex to return successfully, the trusted deterministic Record A/core-regression/synthetic checker to pass, and no source-file changes. The checker uses a temporary SQLite database, independently replays all 595 layouts under each objective, and checks integrity and foreign keys.
 
 The real assignment command (after the smoke succeeds and the supervisor reviews the assignment again) is:
 
@@ -55,7 +55,7 @@ The real assignment command (after the smoke succeeds and the supervisor reviews
 python3 -m tools.keno_bridge.bridge run --issue 1 --approve "$assignment_sha" --timeout 900
 ```
 
-A single assignment revision has one durable reservation, including after failure, timeout, interruption or smoke. Therefore a smoke consumes that revision's reservation: inspect the smoke evidence, then use a newly owner-approved issue revision for actual implementation. There is deliberately no automatic retry/reset switch. Do not delete state to force a rerun. A recovery or repeat requires an explicit new assignment revision and renewed approval, or manual forensic recovery outside this bridge.
+A single assignment revision has one durable reservation, including after failure, timeout, interruption or smoke. Therefore a smoke consumes that revision's reservation: inspect the smoke evidence, then use a newly owner-approved issue revision for actual implementation. There is deliberately no automatic retry/reset switch. The single narrow exception below repairs a documented pre-execution setup defect; it is not an execution retry. Do not delete state to force a rerun. A recovery or repeat requires an explicit new assignment revision and renewed approval, or manual forensic recovery outside this bridge.
 
 Unattended polling is not implemented. There is no cron, systemd timer, issue webhook execution or autonomous merge command. Do not add unattended scheduling until actual SynFart namespace isolation, Codex connectivity, timeout handling and preservation controls have passed local tests.
 
@@ -69,7 +69,7 @@ The trusted orchestrator automatically posts only fixed-format status metadata t
 python3 -m tools.keno_bridge.bridge report --run RUN_KEY
 ```
 
-A marker prevents duplicate result comments after a crash between remote acceptance and local acknowledgement. Reporting requires access to the original still-open issue. If it is closed, preserve the local report and handle the communication manually.
+A private per-state instance ID distinguishes reports from different machines. A marker prevents duplicate result comments after a crash between remote acceptance and local acknowledgement. Reporting requires access to the original still-open issue. If it is closed, preserve the local report and handle the communication manually.
 
 For source changes, inspect the private worktree diff, every new file, test output and `report.json`. The trusted publisher compares literal file hashes rather than accepting an agent-controlled Git index. The report contains a `review_sha256` binding the exact changed contents and deletions. Once reviewed, explicitly publish that revision:
 
@@ -92,3 +92,26 @@ PYTHONDONTWRITEBYTECODE=1 python3 tools/keno_bridge/smoke.py
 ```
 
 This Cloud implementation session cannot access SynFart or verify the live permanent directory. Its initial in-tool Bubblewrap probe failed; a separately approved outside-tool probe succeeded, including actual filesystem/network isolation and deterministic Keno smoke verification. Its terminal GitHub token was invalid. The connected GitHub tool can retrieve Issue #1 and post results/create PRs, but is distinct from the host `gh` authentication used by the shipped bridge. A successful live GitHub-to-local-Codex end-to-end run is not claimed until the exact supervised command succeeds on SynFart. No private historical regression fixtures were available; source-only checks do not restore research data or close Issue #1's permanent-workspace acceptance criteria.
+
+## Recover the original missing-CLI setup failure
+
+If `command -v codex` prints nothing, install the official Codex CLI using your normal package manager and authenticate it locally. The desktop app alone does not guarantee that the `codex` terminal command is available. For an existing npm installation, a user-owned prefix avoids modifying system directories:
+
+```bash
+npm install --global --prefix "$HOME/.local" @openai/codex
+export PATH="$HOME/.local/bin:$PATH"
+codex --version
+codex login
+```
+
+The first bridge release reserved a run before validating the executable. For the exact recorded failure `No such file or directory: '/usr/bin/codex'`, update this separate checkout without rewriting local edits, then explicitly recover the preflight:
+
+```bash
+git pull --ff-only
+python3 -m tools.keno_bridge.bridge resume-preflight \
+  --run issue-1-0f2c4542f4b5b320c54c8a2399f6f4ffc1a2eee76ebe6c14f7ae4cb86bbbd6e2 \
+  --approve 0f2c4542f4b5b320c54c8a2399f6f4ffc1a2eee76ebe6c14f7ae4cb86bbbd6e2 \
+  --timeout 300
+```
+
+Recovery rechecks current GitHub approval, requires the original source tree to be unchanged, and refuses any evidence that a sandbox or Codex execution started. It preserves the original report/worktree, records the one recovery in a separate subdirectory, and retains the same duplicate-execution ledger entry. A second recovery, an actual failed execution, a timeout, or an ambiguous record is refused. Never delete bridge state to get past this check. New missing-CLI failures occur before reservation and do not need this recovery command.

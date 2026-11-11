@@ -8,6 +8,7 @@ import os
 from pathlib import Path
 import re
 import resource
+import secrets
 import shutil
 import signal
 import sqlite3
@@ -176,6 +177,76 @@ def supervise(argv, log, timeout, *, input=None):
         return proc.returncode
 
 
+def preflight(selected=None):
+    launcher = selected or shutil.which('codex')
+    if not launcher:
+        raise Blocked('Codex CLI was not found on PATH; install it or supply --codex-bin')
+    launcher = Path(launcher).expanduser().resolve()
+    if not launcher.is_file():
+        raise Blocked('Selected Codex executable does not exist; check --codex-bin')
+    candidates = [launcher]
+    # The npm command is a JS launcher; mount only its native Linux executable.
+    package = launcher.parent.parent
+    candidates += sorted(package.glob('vendor/*/codex/codex'))
+    candidates += sorted(package.glob('node_modules/@openai/codex-*/vendor/*/codex/codex'))
+    candidates += sorted(package.parent.glob('codex-*/vendor/*/codex/codex'))
+    for candidate in candidates:
+        with candidate.open('rb') as executable:
+            if executable.read(4) != b'\x7fELF' or not os.access(candidate, os.X_OK):
+                continue
+        help_text = command([str(candidate), 'exec', '--help'], timeout=10)
+        required = ('--ephemeral', '--skip-git-repo-check', '--sandbox')
+        if not all(flag in help_text for flag in required):
+            raise Blocked('Installed Codex CLI lacks required isolation flags; update the CLI')
+        if not shutil.which('bwrap'):
+            raise Blocked('Bubblewrap is required; install it before running an assignment')
+        return candidate.resolve()
+    raise Blocked('No compatible native Linux Codex binary found beside the selected launcher')
+
+
+def run_folder(state, report):
+    folder = state / report['key']
+    return folder / 'preflight-recovery' if report.get('attempt') == 'preflight-recovery' else folder
+
+
+def report_marker(report):
+    instance = ':' + report['instance'] if report.get('instance') else ''
+    suffix = ':preflight-recovery' if report.get('attempt') == 'preflight-recovery' else ''
+    return '<!-- keno-bridge:' + report['key'] + instance + suffix + ' -->'
+
+
+def state_identity(state):
+    file = state / 'instance-id'
+    if not file.exists():
+        with file.open('x') as out:
+            out.write(secrets.token_hex(16))
+    identity = file.read_text()
+    if file.is_symlink() or not re.fullmatch(r'[0-9a-f]{32}', identity):
+        raise Blocked('Invalid bridge instance identity')
+    return identity
+
+
+def recover_preflight(db, state, key, issue, sha):
+    row = db.execute('SELECT * FROM runs WHERE key=?', (key,)).fetchone()
+    if row is None or row['status'] != 'blocked' or row['issue'] != issue or row['digest'] != sha:
+        raise Blocked('No matching blocked preflight run is eligible for recovery')
+    old = json.loads(row['report'])
+    # Only the exact first-release missing-executable defect qualifies. Fail closed otherwise.
+    expected = "[Errno 2] No such file or directory: '/usr/bin/codex'"
+    folder = state / key
+    if old.get('local_reason') != expected or old.get('attempt'):
+        raise Blocked('Recovery is limited to the original missing /usr/bin/codex failure')
+    if any((folder / name).exists() for name in ('codex.log', 'sandbox-probe.log', 'preflight-recovery')):
+        raise Blocked('Execution evidence exists or recovery was attempted; refusing another execution')
+    baseline = json.loads((folder / 'baseline.json').read_text())
+    changes, _ = collect_changes(folder / 'worktree', baseline)
+    if changes:
+        raise Blocked('Original worktree changed; preserve and inspect it manually')
+    with db:
+        db.execute("UPDATE runs SET status='reserved',posted=0 WHERE key=?", (key,))
+    return old
+
+
 def sandbox(work, codex, gateway_socket):
     bwrap = shutil.which('bwrap')
     if not bwrap:
@@ -264,7 +335,7 @@ def collect_changes(work, baseline):
 
 def report_text(report):
     # No agent-authored text, issue content, local paths, diffs, or raw logs are posted automatically.
-    return ('<!-- keno-bridge:' + report['key'] + ' -->\n'
+    return (report_marker(report) + '\n'
             'Supervised Keno bridge result\n\n'
             f"- Assignment SHA-256: `{report['digest']}`\n"
             f"- Status: **{report['status']}**\n"
@@ -284,25 +355,35 @@ def publish_report(gh, db, key):
         return
     # Recover a crash after GitHub accepted a comment but before local acknowledgement.
     _, comments = gh.assignment(row['issue'])
-    marker = '<!-- keno-bridge:' + key + ' -->'
+    marker = report_marker(json.loads(row['report']))
     if not any(marker in c.get('body', '') and c.get('user', {}).get('login') == OWNER for c in comments):
         gh.post(row['issue'], report_text(json.loads(row['report'])))
     with db:
         db.execute('UPDATE runs SET posted=1 WHERE key=?', (key,))
 
 
-def execute(state, gh, issue_number, approval, codex, timeout, smoke=False):
+def execute(state, gh, issue_number, approval, codex, timeout, smoke=False, recovery_key=None):
     issue, comments = gh.assignment(issue_number)
     sha = digest(issue)
     approval_id = approved(issue, comments)
     if approval != sha:
         raise Blocked('Supervised approval must equal the inspected assignment SHA-256')
+    codex = preflight(codex)
     with locked(state), ledger(state) as db:
-        key = reserve(db, issue_number, sha)
-        folder = state / key
-        folder.mkdir(mode=0o700)
+        if recovery_key:
+            if recovery_key != f'issue-{issue_number}-{sha}':
+                raise Blocked('Recovery key does not match the current assignment')
+            old = recover_preflight(db, state, recovery_key, issue_number, sha)
+            key = recovery_key
+            smoke = old['mode'] == 'smoke'
+        else:
+            key = reserve(db, issue_number, sha)
         report = dict(key=key, digest=sha, issue=issue_number, approval_comment=approval_id,
-                      status='blocked', mode='smoke' if smoke else 'codex')
+                      status='blocked', mode='smoke' if smoke else 'codex', instance=state_identity(state))
+        if recovery_key:
+            report['attempt'] = 'preflight-recovery'
+        folder = run_folder(state, report)
+        folder.mkdir(mode=0o700)
         try:
             # This checkout is always from GitHub, never the permanent research directory.
             repo = folder / 'source'
@@ -329,7 +410,7 @@ def execute(state, gh, issue_number, approval, codex, timeout, smoke=False):
                            'python3 -m unittest -v multi_keno.test_platform unrestricted_resolution.test_resolution. '
                            'Do not modify source files.\n\n' if smoke else '') +
                           json.dumps({'title': issue['title'], 'body': issue.get('body')}, ensure_ascii=False))
-                rc = supervise(args + ['/usr/bin/python3', '/runner/relay.py', '/runner/codex', 'exec', '--ignore-user-config', '--ignore-rules',
+                rc = supervise(args + ['/usr/bin/python3', '/runner/relay.py', '/runner/codex', 'exec',
                                        '--ephemeral', '--skip-git-repo-check', '--sandbox', 'workspace-write',
                                        '--color', 'never', '-c', 'model_provider="keno_bridge"',
                                        '-c', 'model_providers.keno_bridge.name="Keno gateway"',
@@ -369,7 +450,7 @@ def publish(state, gh, key, review):
         if not row or row['status'] != 'awaiting-source-review':
             raise Blocked('Run is not awaiting source review')
         report = json.loads(row['report'])
-        folder = state / key
+        folder = run_folder(state, report)
         work = folder / 'worktree'
         baseline = json.loads((folder / 'baseline.json').read_text())
         changes, revision = collect_changes(work, baseline)
@@ -409,9 +490,14 @@ def main():
     inspect = sub.add_parser('inspect'); inspect.add_argument('--issue', type=int, required=True)
     run = sub.add_parser('run'); run.add_argument('--issue', type=int, required=True)
     run.add_argument('--approve', required=True, help='Exact assignment SHA-256 after local review')
-    run.add_argument('--codex-bin', type=Path, default=Path(shutil.which('codex') or '/usr/bin/codex'))
+    run.add_argument('--codex-bin', type=Path)
     run.add_argument('--timeout', type=int, default=900)
     run.add_argument('--smoke', action='store_true')
+    recovery = sub.add_parser('resume-preflight')
+    recovery.add_argument('--run', required=True)
+    recovery.add_argument('--approve', required=True)
+    recovery.add_argument('--codex-bin', type=Path)
+    recovery.add_argument('--timeout', type=int, default=300)
     pub = sub.add_parser('publish'); pub.add_argument('--run', required=True); pub.add_argument('--review', required=True)
     retry = sub.add_parser('report'); retry.add_argument('--run', required=True)
     args = parser.parse_args()
@@ -424,11 +510,20 @@ def main():
             issue, comments = gh.assignment(args.issue)
             print(json.dumps({'issue': issue, 'assignment_sha256': digest(issue),
                               'approval_comment': approved(issue, comments)}, indent=2))
-        elif args.action == 'run':
+        elif args.action in ('run', 'resume-preflight'):
             if not 1 <= args.timeout <= 3600:
                 raise Blocked('Timeout must be 1–3600 seconds')
-            result = execute(state, gh, args.issue, args.approve, args.codex_bin,
-                             args.timeout, args.smoke)
+            recovery_key = None
+            if args.action == 'resume-preflight':
+                match = re.fullmatch(r'issue-(\d+)-[0-9a-f]{64}', args.run)
+                if not match:
+                    raise Blocked('Invalid recovery key')
+                issue_number = int(match.group(1))
+                recovery_key = args.run
+            else:
+                issue_number = args.issue
+            result = execute(state, gh, issue_number, args.approve, args.codex_bin,
+                             args.timeout, getattr(args, 'smoke', False), recovery_key=recovery_key)
             print(json.dumps(result, indent=2))
             return 0 if result['status'] in ('completed-no-source-changes', 'awaiting-source-review') else 2
         elif args.action == 'publish':

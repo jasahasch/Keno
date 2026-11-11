@@ -70,6 +70,7 @@ class BridgeTests(unittest.TestCase):
         self.original_git = b.git
         with patch.object(b, 'git', side_effect=self.adapter), \
              patch.object(b, 'sandbox', side_effect=lambda work, codex, socket: ['sandbox', str(socket)]), \
+             patch.object(b, 'preflight', return_value=Path('/bin/true')), \
              patch.object(b, 'Gateway') as gateway, \
              patch.object(b, 'supervise', side_effect=supervise or (lambda *a, **k: 0)):
             gateway.return_value.__enter__.return_value.path = self.state / 'api.sock'
@@ -388,6 +389,65 @@ class BridgeTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 with Gateway(self.state / 'missing.sock', self.state / 'missing-auth.json'):
                     pass
+
+    def test_missing_codex_preflight_does_not_reserve_assignment(self):
+        with patch.object(b.shutil, 'which', return_value=None):
+            with self.assertRaises(b.Blocked):
+                b.execute(self.state, self.gh, 9, b.digest(self.gh.issue), None, 1)
+        self.assertFalse((self.state / 'runs.sqlite').exists())
+
+    def test_npm_launcher_resolves_native_binary(self):
+        package = self.root / 'package'
+        (package / 'bin').mkdir(parents=True)
+        launcher = package / 'bin/codex.js'
+        launcher.write_text('#!/usr/bin/env node')
+        native = package / 'node_modules/@openai/codex-linux-x64/vendor/x86_64-unknown-linux-musl/codex/codex'
+        native.parent.mkdir(parents=True)
+        native.write_bytes(b'\x7fELFfake')
+        native.chmod(0o700)
+        with patch.object(b, 'command', return_value='--ephemeral --skip-git-repo-check --sandbox'):
+            self.assertEqual(b.preflight(launcher), native)
+
+    def legacy_failure(self):
+        with self.execution(), patch.object(b, 'sandbox', side_effect=FileNotFoundError(2, 'No such file or directory', '/usr/bin/codex')):
+            return self.run_fixture(smoke=True)
+
+    def test_exact_preflight_recovery_preserves_original_and_remains_single_use(self):
+        old = self.legacy_failure()
+        original = (self.state / old['key'] / 'report.json').read_bytes()
+        with self.execution():
+            result = b.execute(self.state, self.gh, 9, b.digest(self.gh.issue), Path('/bin/true'), 1,
+                               recovery_key=old['key'])
+            with self.assertRaises(b.Blocked):
+                b.execute(self.state, self.gh, 9, b.digest(self.gh.issue), Path('/bin/true'), 1,
+                          recovery_key=old['key'])
+        self.assertEqual(result['status'], 'completed-no-source-changes')
+        self.assertEqual(result['attempt'], 'preflight-recovery')
+        self.assertEqual((self.state / old['key'] / 'report.json').read_bytes(), original)
+        self.assertEqual(len(self.gh.posts), 2)
+        self.assertNotEqual(b.report_marker(old), b.report_marker(result))
+
+    def test_execution_evidence_prevents_preflight_recovery(self):
+        old = self.legacy_failure()
+        (self.state / old['key'] / 'codex.log').touch()
+        with self.execution(), self.assertRaises(b.Blocked):
+            b.execute(self.state, self.gh, 9, b.digest(self.gh.issue), Path('/bin/true'), 1,
+                      recovery_key=old['key'])
+
+    def test_modified_original_worktree_prevents_preflight_recovery(self):
+        old = self.legacy_failure()
+        (self.work() / 'docs/test.md').write_text('preserve this edit')
+        with self.execution(), self.assertRaises(b.Blocked):
+            b.execute(self.state, self.gh, 9, b.digest(self.gh.issue), Path('/bin/true'), 1,
+                      recovery_key=old['key'])
+
+    def test_report_marker_distinguishes_host_state_instances(self):
+        with self.execution():
+            first = self.run_fixture()
+            second_state = b.checked_state(self.root / 'second-state')
+            second = b.execute(second_state, self.gh, 9, b.digest(self.gh.issue), Path('/bin/true'), 1)
+        self.assertNotEqual(b.report_marker(first), b.report_marker(second))
+        self.assertEqual(len(self.gh.posts), 2)
 
 if __name__ == '__main__':
     unittest.main()
