@@ -69,7 +69,7 @@ class BridgeTests(unittest.TestCase):
     def execution(self, supervise=None):
         self.original_git = b.git
         with patch.object(b, 'git', side_effect=self.adapter), \
-             patch.object(b, 'sandbox', return_value=['sandbox']), \
+             patch.object(b, 'sandbox', side_effect=lambda work, codex, socket: ['sandbox', str(socket)]), \
              patch.object(b, 'Gateway') as gateway, \
              patch.object(b, 'supervise', side_effect=supervise or (lambda *a, **k: 0)):
             gateway.return_value.__enter__.return_value.path = self.state / 'api.sock'
@@ -155,7 +155,12 @@ class BridgeTests(unittest.TestCase):
 
     def test_smoke_complete_flow_and_no_duplicate_execution(self):
         before = self.private.read_bytes()
-        with self.execution():
+        def check_socket(args, *unused, **kwargs):
+            if '/runner/smoke.py' in args:
+                self.assertEqual(Path(args[1]).name, 'empty')
+            return 0
+
+        with self.execution(check_socket):
             result = self.run_fixture(smoke=True)
             with self.assertRaises(b.Blocked):
                 self.run_fixture(smoke=True)

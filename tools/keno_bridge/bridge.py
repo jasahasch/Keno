@@ -315,8 +315,8 @@ def execute(state, gh, issue_number, approval, codex, timeout, smoke=False):
             (folder / 'baseline.json').write_text(json.dumps(baseline, sort_keys=True))
             (folder / 'assignment.json').write_text(json.dumps(issue, sort_keys=True))
             # Probe before opening the API gateway or exposing any assignment to Codex.
-            args = sandbox(work, codex, folder / 'empty')
-            if supervise(args + ['/bin/true'], folder / 'sandbox-probe.log', 10):
+            offline_args = sandbox(work, codex, folder / 'empty')
+            if supervise(offline_args + ['/bin/true'], folder / 'sandbox-probe.log', 10):
                 raise Blocked('Sandbox probe failed; execution refused')
             with Gateway(state / 'api.sock') as gateway:
                 args = sandbox(work, codex, gateway.path)
@@ -338,7 +338,7 @@ def execute(state, gh, issue_number, approval, codex, timeout, smoke=False):
             if rc:
                 raise Blocked(f'Codex returned exit {rc}')
             if smoke:
-                if supervise(args + ['/usr/bin/python3', '/runner/smoke.py'], folder / 'smoke.log', timeout):
+                if supervise(offline_args + ['/usr/bin/python3', '/runner/smoke.py'], folder / 'smoke.log', timeout):
                     raise Blocked('Deterministic smoke verification failed')
                 report['smoke_verified'] = True
             changes, revision = collect_changes(work, baseline)
