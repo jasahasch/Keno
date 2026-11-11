@@ -1,0 +1,189 @@
+"""Post-PR9 secondary continuation of the merged 86-incidence ledgers with durable worktree evidence.
+
+No historical files or databases are written. Run with assertions enabled.
+"""
+import argparse
+from collections import Counter
+from hashlib import sha256
+import json
+import os
+from pathlib import Path
+import signal
+import time
+
+import incidence86 as base
+
+
+def key(row):
+    return tuple(map(tuple, row['shape']))
+
+
+def priority(row):
+    return (row['largest_component'], max(row['component_cycle_ranks']), key(row))
+
+
+def write_evidence(path, text):
+    temporary = path.with_suffix('.tmp')
+    with temporary.open('w', encoding='utf-8') as stream:
+        stream.write(text)
+        stream.flush()
+        os.fsync(stream.fileno())
+    temporary.replace(path)
+
+
+def main():
+    if not __debug__:
+        raise SystemExit('Assertions must be enabled')
+    parser = argparse.ArgumentParser(__doc__)
+    parser.add_argument('--seconds', type=float, default=600)
+    parser.add_argument('--unvisited-seconds', type=float, default=3)
+    parser.add_argument('--output-dir', type=Path, required=True,
+                        help='new evidence directory directly under the worktree docs directory')
+    args = parser.parse_args()
+    if not 0 < args.seconds <= 840 or not 0 < args.unvisited_seconds <= args.seconds:
+        parser.error('positive budgets required; total must be at most 840 seconds')
+    docs = base.ROOT / 'docs'
+    output = args.output_dir.absolute()
+    if output.parent.resolve() != docs.resolve() or output.name.startswith('.'):
+        parser.error('--output-dir must be a new directory directly under docs/')
+    try:
+        output.mkdir(mode=0o700)
+    except FileExistsError:
+        parser.error('--output-dir already exists; preserve it and select a new directory')
+    journal = output / 'attempts.txt'
+    journal.touch(exist_ok=False)
+    started = time.monotonic()
+    deadline = started + args.seconds
+    path = base.ROOT / 'docs/incidence86-coverage.json'
+    raw = path.read_bytes()
+    baseline = json.loads(raw)
+    rows = baseline['geometries_ledger']
+    continuation_raw = (base.ROOT / 'docs/incidence86-continuation.json').read_bytes()
+    assert sha256(continuation_raw).hexdigest() == '6544c9220b10e3c4315d7f201b1b18882125ab020840f251d3135c6d83661215'
+    continuation = json.loads(continuation_raw)
+    assert sha256(raw).hexdigest() == continuation['baseline_sha256']
+    original_baseline = {key(row): row for row in rows}
+    prior = {key(a): a for a in continuation['attempts']}
+    assert len(prior) == len(continuation['attempts']) == 291
+    for shape, attempt in prior.items():
+        assert original_baseline[shape]['status'] == attempt['baseline_status']
+    rows = [dict(row, status=prior[key(row)]['status']) if key(row) in prior else row
+            for row in rows]
+    original = {key(row): row for row in rows}
+    assert len(original) == len(rows) == 725
+    assert Counter(r['status'] for r in rows) == {
+        'certified-no-improvement': 497, 'open-resource-limit': 228}
+    priority_raw = (base.ROOT / 'docs/incidence86-priority.json').read_bytes()
+    assert sha256(priority_raw).hexdigest() == '07e84bccf4ac12772ad455c5512c105e8f43ab92226d437c17762f12110c7efc'
+    latest = json.loads(priority_raw)
+    assert latest['continuation_sha256'] == sha256(continuation_raw).hexdigest()
+    recent = {key(a): a for a in latest['attempts']}
+    assert len(recent) == len(latest['attempts']) == 228
+    for shape, a in recent.items():
+        assert original[shape]['status'] == a['baseline_status'] == 'open-resource-limit'
+    rows = [dict(row, status=recent[key(row)]['status']) if key(row) in recent else row
+            for row in rows]
+    original = {key(row): row for row in rows}
+    assert Counter(r['status'] for r in rows) == {
+        'certified-no-improvement': 503, 'open-resource-limit': 222}
+    table_hash = sha256((base.ROOT / 'outputs/keno-expanded-paytables.json').read_bytes()).hexdigest()
+    assert table_hash == baseline['paytable_sha256'] == 'd12c1a7588b93d8e2fff3061d4c89b8b3a7c9fd6d9b386460952f2b05fe8cbe1'
+
+    def expired(signum, frame):
+        raise TimeoutError('bounded attempt expired')
+
+    signal.signal(signal.SIGALRM, expired)
+    signal.setitimer(signal.ITIMER_REAL, max(.001, deadline - time.monotonic()))
+    try:
+        source = {tuple(map(tuple, row['shape'])) for row in
+                  json.loads((base.b.OUT / 'coverage-final.json').read_text())['geometries']}
+        assert len(source) == 167 and source == set(base.b.shapes85())
+        assert base.lift(source) == base.partition_enumeration() == set(original)
+    finally:
+        signal.setitimer(signal.ITIMER_REAL, 0)
+    attempts = []
+    updated = dict(original)
+    # Do not repeat the 13 priority cases without a different viable method.
+    excluded = {key(a) for a in latest['attempts'] if a['priority_group'] == 1}
+    assert len(excluded) == 13
+    targets = sorted((r for r in rows if r['status'] == 'open-resource-limit'
+                      and key(r) not in excluded),
+                     key=lambda r: (recent[key(r)]['stage'] != 'packed-replay', priority(r)))
+    assert len(targets) == 215
+    for row in targets:
+        remaining = deadline - time.monotonic()
+        if remaining <= 0:
+            break
+        shape = key(row)
+        allotted = min(remaining, args.unvisited_seconds)
+        messages = max(row['component_cycle_ranks']) <= 1
+        attempt = dict(shape=shape, priority_group=2,
+                       previous_stopping_stage=recent[shape]['stage'], baseline_status=row['status'], budget_seconds=allotted,
+                       method='conditional-tree-cycle' if messages else 'full-component-profiles',
+                       replay='packed-integer', stage='initial', status='open-resource-limit')
+        tick = time.monotonic()
+        signal.setitimer(signal.ITIMER_REAL, allotted)
+        try:
+            lower, totals = base.bound(shape, False, messages)
+            attempt['stage'] = 'packed-replay'
+            assert (lower, totals) == base.bound(shape, True, messages)
+            attempt.update(stage='finished', lower=lower, combined_totals=totals,
+                           status='certified-no-improvement' if lower >= base.b.RECORD else 'open-envelope')
+        except TimeoutError:
+            pass
+        finally:
+            signal.setitimer(signal.ITIMER_REAL, 0)
+        attempt['elapsed_seconds'] = time.monotonic() - tick
+        attempts.append(attempt)
+        updated[shape] = dict(row, status=attempt['status'], continuation_attempt=len(attempts))
+        with journal.open('a', encoding='utf-8') as stream:
+            stream.write(json.dumps(dict(attempt=len(attempts), **attempt)) + '\n')
+            stream.flush()
+            os.fsync(stream.fileno())
+
+    after = Counter(r['status'] for r in updated.values())
+    assert all(updated[key(r)] == r for r in rows if r['status'] == 'certified-no-improvement')
+    report = dict(baseline_commit_requested='eb011cd15ee0bae3c889a2a6c6642994babd23e6',
+                  priority_sha256=sha256(priority_raw).hexdigest(),
+                  deferred_priority_keys=sorted(excluded & {key(r) for r in rows if r['status'].startswith('open-')}),
+                  continuation_sha256=sha256(continuation_raw).hexdigest(),
+                  priority_count=0, source_commit='unavailable: masked Git metadata',
+                  host_identity='not independently attested', baseline_sha256=sha256(raw).hexdigest(),
+                  paytable_sha256=table_hash, census_keys=725, enumeration_agreement=True,
+                  configuration=dict(seconds=args.seconds, unvisited_seconds=args.unvisited_seconds), elapsed_seconds=time.monotonic()-started,
+                  throughput_attempts_per_second=len(attempts)/(time.monotonic()-started),
+                  before=dict(Counter(r['status'] for r in rows)), after=dict(after),
+                  accepted_baseline_preserved=503, attempts=attempts,
+                  unattempted=[dict(shape=key(r), baseline_status=r['status']) for r in targets
+                               if key(r) not in {tuple(map(tuple, a['shape'])) for a in attempts}])
+    keys = {
+        'attempted': [key(a) for a in attempts],
+        'newly_certified': [key(a) for a in attempts if a['status'] == 'certified-no-improvement'],
+        'still_open': sorted(k for k, row in updated.items() if row['status'].startswith('open-')),
+        'deferred_priority': report['deferred_priority_keys'],
+        'unattempted': [key(row) for row in report['unattempted']],
+    }
+    write_evidence(output / 'ledger.json', json.dumps(report, indent=2) + '\n')
+    write_evidence(output / 'keys.json', json.dumps(keys, indent=2) + '\n')
+    minimum = min((a['lower'] for a in attempts if a['status'] == 'certified-no-improvement'), default=None)
+    write_evidence(output / 'report.md', f'''# Post-PR #9 incidence-86 pass
+
+Baseline: 503 certified exclusions and 222 open geometries.
+
+- Attempted: {len(keys['attempted'])}
+- New exclusions with matching ordinary and packed replay: {len(keys['newly_certified'])}
+- Open: {len(keys['still_open'])}
+- Deferred priority keys: {len(keys['deferred_priority'])}
+- Other unattempted keys: {len(keys['unattempted'])}
+- Minimum new floor: {minimum if minimum is not None else 'none'}
+- Elapsed seconds: {report['elapsed_seconds']:.3f}
+- Throughput: {report['throughput_attempts_per_second']:.3f} attempts per second
+
+See [ledger](ledger.json), [attempt journal](attempts.txt), and [key lists](keys.json).
+The retained evidence still needs independent review. Unrestricted optimality remains open.
+''')
+    print(f'Saved ledger, journal, key lists, and report in {output}')
+
+
+if __name__ == '__main__':
+    main()
